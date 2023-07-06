@@ -1,7 +1,8 @@
 
 .nav {
     grid-area: n;
-    background-color: #470caf;
+    background-color: rgba(121, 23, 43, 0.93);
+    border-radius: 2px;
 }
 
 .active {

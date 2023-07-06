@@ -4,23 +4,26 @@
     display: grid;
     grid-template-columns: 2fr 8fr;
 }
-.dialogs_item{
-    background-color: #73b9c9;
+
+.dialogs_item {
+    background-color: #e3f6fc;
     padding: 5px;
 }
-.messages{
-    background-color: #dc9e9e;
+
+.messages {
+    background-color: #d2cdcd;
     padding: 5px;
 }
-.dialogs_item .active{
-    color: gold;
 
-}
-
-.dialog .active{
+.dialogs_item .active {
     color: gold;
 }
 
-.dialog{
-    color: #811428;
+.dialog {
+    color: rgba(0, 0, 0, 0.66);
 }
+
+a {
+    color: rgba(0, 0, 0, 0.66);
+}
+

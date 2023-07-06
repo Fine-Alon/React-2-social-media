@@ -16,5 +16,6 @@ li {
 }
 
 .app_wrapper_content{
-  background-color: #108d16;
+  background-color: white;
+  border-radius: 10px;
 }

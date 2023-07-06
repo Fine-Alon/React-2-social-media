@@ -1,8 +1,13 @@
 .header {
     grid-area: h;
-    background-color: #890000;
-  }
-  
-  .header img {
+    background-color: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    margin-left: 10px;
     width: 40px;
-  }
+    height: 40px;
+    border-radius: 50%;
+}
