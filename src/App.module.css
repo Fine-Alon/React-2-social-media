@@ -3,7 +3,7 @@ li {
   list-style-type: none;
 }
 
-.app-wrapper {
+.app_wrapper {
   margin: 0 auto;
   display: grid;
 
@@ -15,3 +15,6 @@ li {
   grid-gap: 10px;
 }
 
+.app_wrapper_content{
+  background-color: #108d16;
+}

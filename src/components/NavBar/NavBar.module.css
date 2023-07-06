@@ -2,4 +2,8 @@
 .nav {
     grid-area: n;
     background-color: #470caf;
-  }
+}
+
+.active {
+    color: #65a269;
+}
