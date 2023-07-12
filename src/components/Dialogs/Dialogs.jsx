@@ -5,11 +5,18 @@ import Message from "./Message/Message";
 
 // const isActiveDialog = ({isActive}) => isActive ? style.active : style.dialog
 
-const Dialogs = ({messages,dialogs}) => {
+const Dialogs = (props) => {
+    let dialogsElements = props.dialogPage.dialogs.map((d) => (<Dialog name={d.name} id={d.id}/>))
 
-    let dialogsElements = dialogs.map((d)=>(<Dialog name={d.name} id={d.id}/>))
+    let messagesElements = props.dialogPage.messages.map((m) => (<Message name={m.name}/>))
 
-    let messagesElements = messages.map((m)=>(<Message name={m.name}/>))
+    let areaMessages = React.createRef()
+
+    let sendMessage = () => {
+        alert(
+            areaMessages.current.value
+        )
+    }
 
     return (
         <div className={style.dialogs}>
@@ -18,6 +25,10 @@ const Dialogs = ({messages,dialogs}) => {
             </div>
             <div className={style.messages}>
                 {messagesElements}
+                <div className={style.flex_colomn}>
+                    <textarea ref={areaMessages}></textarea>
+                    <button onClick={sendMessage}>add message</button>
+                </div>
             </div>
         </div>
     )

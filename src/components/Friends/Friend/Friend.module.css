@@ -1,0 +1,21 @@
+.content {
+    grid-area: c;
+    background-color: #41610c;
+}
+
+.ava{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.frend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+.frend span {
+    font-size: 12px
+}

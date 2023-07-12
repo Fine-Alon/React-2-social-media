@@ -1,0 +1,13 @@
+.dialog {
+    color: rgba(0, 0, 0, 0.66);
+    padding-bottom: 4px;
+}
+.active{
+    color: gold;
+}
+
+.avatar{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}

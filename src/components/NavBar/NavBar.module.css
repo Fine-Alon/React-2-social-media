@@ -3,8 +3,24 @@
     grid-area: n;
     background-color: rgba(121, 23, 43, 0.93);
     border-radius: 2px;
+    padding: 10px;
 }
 
 .active {
     color: #65a269;
 }
+
+.friendBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.friendBox a{
+    font-size: 50px;
+}
+
+
+
+
+

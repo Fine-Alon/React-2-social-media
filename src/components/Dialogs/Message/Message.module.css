@@ -1,0 +1,22 @@
+.dialog {
+    color: rgba(0, 0, 0, 0.66);
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dialog:nth-child(2n){
+    flex-direction: row-reverse;
+}
+.ava{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 2px;
+}
+.chat{
+}
+.active{
+    color: gold;
+}
+

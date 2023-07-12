@@ -13,14 +13,16 @@
 .messages {
     background-color: #d2cdcd;
     padding: 5px;
+    flex-direction: column;
+}
+
+.flex_colomn{
+    display: flex;
+    flex-direction: column;
 }
 
 .dialogs_item .active {
     color: gold;
-}
-
-.dialog {
-    color: rgba(0, 0, 0, 0.66);
 }
 
 a {
