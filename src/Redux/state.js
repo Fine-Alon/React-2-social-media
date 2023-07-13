@@ -23,6 +23,7 @@ let state = {
             {id: '2', countOfLikes: 43, message: 'This is my first post'},
             {id: '3', countOfLikes: 25, message: 'so how are u today'},
         ],
+        messageToPost: 'AlonMMA'
     },
     dialogPage: {
         dialogs: [
@@ -40,12 +41,19 @@ let state = {
         ],
     },
 }
+window.state = state;
 
-export let addPostToState = (postText) => {
-    let newPost = {id: '4', countOfLikes: 0, message: postText}
+export let addPostToState = () => {
+    let newPost = {id: '4', countOfLikes: 0, message: state.profilePage.messageToPost}
     state.profilePage.postInfo.push(newPost)
+    state.profilePage.messageToPost = ''
     renderEntireThree(state);
 }
 
+export let textUpdating = (value) => {
+    let newValue = value
+    state.profilePage.messageToPost = newValue
+    renderEntireThree(state);
+}
 
 export default state;
