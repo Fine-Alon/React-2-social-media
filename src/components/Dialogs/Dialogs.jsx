@@ -13,9 +13,11 @@ const Dialogs = (props) => {
     let areaMessages = React.createRef()
 
     let sendMessage = () => {
-        alert(
-            areaMessages.current.value
-        )
+        props.sendNewMessage()
+    }
+    let changeMessageText = () => {
+       let text = areaMessages.current.value
+           props.updateMessageText(text)
     }
 
     return (
@@ -26,7 +28,7 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messagesElements}
                 <div className={style.flex_colomn}>
-                    <textarea ref={areaMessages}></textarea>
+                    <textarea ref={areaMessages} onChange={changeMessageText} value={props.dialogPage.currentText}/>
                     <button onClick={sendMessage}>add message</button>
                 </div>
             </div>

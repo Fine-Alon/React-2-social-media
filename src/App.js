@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
 import Music from "./components/Music/Music";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import style from './App.module.css'
 import News from "./components/News/News";
 import Dialogs from "./components/Dialogs/Dialogs";
@@ -36,10 +36,12 @@ const App = (props) => {
             <NavBar/>
             <div className={style.app_wrapper_content}>
                 <Routes>
-                    <Route path={'/profile'} element={<Profile addPostToState={props.addPostToState}
-                                                               profilePage={props.state.profilePage}
-                                                               textUpdating={props.textUpdating}/>}/>
-                    <Route path='/dialogs' element={<Dialogs dialogPage={props.state.dialogPage}/>}/>
+                    <Route path={'/profile'} element={<Profile addPostToState={props.store.addPostToState.bind(props.store)}
+                                                               profilePage={props.store.getState().profilePage}
+                                                               textUpdating={props.store.textUpdating.bind(props.store)}/>}/>
+                    <Route path='/dialogs' element={<Dialogs dialogPage={props.store.getState().dialogPage}
+                                                             updateMessageText={props.store.updateMessageText.bind(props.store)}
+                                                             sendNewMessage={props.store.sendNewMessage.bind(props.store)}/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

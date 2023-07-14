@@ -1,10 +1,25 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {renderEntireThree} from "./render";
-import state from "./Redux/state";
+import ReactDOM from "react-dom/client";
+import {BrowserRouter} from "react-router-dom";
+import App from "./App";
+import store from "./Redux/state";
 
-renderEntireThree(state);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+export let renderEntireThree = (state) => {
+
+    root.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App store={store}/>
+            </BrowserRouter>
+        </React.StrictMode>
+    );
+}
+
+renderEntireThree(store.getState());
+store.setSubscribe(renderEntireThree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
