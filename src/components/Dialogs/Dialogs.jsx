@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Dialogs.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import {sendNewMessageActionCreator, updateMessageActionCreator} from "../../Redux/state";
+import {sendNewMessageActionCreator, updateMessageActionCreator} from "../../Redux/reducer_dialogPage";
 
 // const isActiveDialog = ({isActive}) => isActive ? style.active : style.dialog
 

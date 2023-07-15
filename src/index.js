@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import store from "./Redux/state";
+import store from "./Redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let renderEntireThree = (state) => {
