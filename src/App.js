@@ -36,12 +36,10 @@ const App = (props) => {
             <NavBar/>
             <div className={style.app_wrapper_content}>
                 <Routes>
-                    <Route path={'/profile'} element={<Profile addPostToState={props.store.addPostToState.bind(props.store)}
-                                                               profilePage={props.store.getState().profilePage}
-                                                               textUpdating={props.store.textUpdating.bind(props.store)}/>}/>
+                    <Route path={'/profile'} element={<Profile dispatch={props.store.dispatch.bind(props.store)}
+                                                               profilePage={props.store.getState().profilePage}/>}/>
                     <Route path='/dialogs' element={<Dialogs dialogPage={props.store.getState().dialogPage}
-                                                             updateMessageText={props.store.updateMessageText.bind(props.store)}
-                                                             sendNewMessage={props.store.sendNewMessage.bind(props.store)}/>}/>
+                                                             dispatch={props.store.dispatch.bind(props.store)}/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

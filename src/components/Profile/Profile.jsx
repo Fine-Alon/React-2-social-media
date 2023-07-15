@@ -7,10 +7,9 @@ const Profile = (props) => {
     return (
         <body className={style.content}>
         <ProfileInfo/>
-        <MyPosts addPostToState={props.addPostToState}
+        <MyPosts dispatch={props.dispatch}
                  postInfo={props.profilePage.postInfo}
-                 messageToPost={props.profilePage.messageToPost}
-                 textUpdating={props.textUpdating}/>
+                 messageToPost={props.profilePage.messageToPost}/>
         </body>
     )
 }

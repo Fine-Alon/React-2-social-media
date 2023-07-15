@@ -1,3 +1,8 @@
+const ADD_POST_TO_STATE = 'ADD-POST-TO-STATE'
+const TEXT_UPDATING = 'TEXT-UPDATING'
+const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
+const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
+
 let store = {
     _callSubscriber() {
         console.log('state changed')
@@ -41,36 +46,50 @@ let store = {
                 {id: '3', name: 'who are you?'},
                 {id: '4', name: 'tic ti tic'},
             ],
-            currentText: 'write'
+            currentText: ''
         },
     },
     getState() {
         return this._state
     },
-    addPostToState() {
-        let newPost = {id: '4', countOfLikes: 0, message: this._state.profilePage.messageToPost}
-        this._state.profilePage.postInfo.push(newPost)
-        this._state.profilePage.messageToPost = ''
-        this._callSubscriber(this._state);
-    },
     setSubscribe(observe) {
         this._callSubscriber = observe
     },
-    textUpdating(value) {
-        this._state.profilePage.messageToPost = value
-        this._callSubscriber(this._state);
-    },
-    sendNewMessage() {
-        let text = this._state.dialogPage.currentText
-        this._state.dialogPage.messages.push({id: '4', name: text})
-        this._state.dialogPage.currentText = ''
-        this._callSubscriber(this._state)
-    },
-    updateMessageText(newText) {
-        this._state.dialogPage.currentText = newText
-        this._callSubscriber(this._state)
+    dispatch(action) {
+        switch (action.type) {
+            case ADD_POST_TO_STATE:
+                let newPost = {id: '4', countOfLikes: 0, message: this._state.profilePage.messageToPost}
+                this._state.profilePage.postInfo.push(newPost)
+                this._state.profilePage.messageToPost = ''
+                this._callSubscriber(this._state);
+                break;
+            case TEXT_UPDATING:
+                this._state.profilePage.messageToPost = action.value
+                this._callSubscriber(this._state);
+                break;
+            case SEND_NEW_MESSAGE:
+                let text = this._state.dialogPage.currentText
+                this._state.dialogPage.messages.push({id: '4', name: text})
+                this._state.dialogPage.currentText = ''
+                this._callSubscriber(this._state)
+                break;
+            case UPDATE_MESSAGE_TEXT:
+                this._state.dialogPage.currentText = action.newText
+                this._callSubscriber(this._state)
+                break;
+        }
     },
 }
-window.store= store.getState()
+
+export const addPostActionCreator = () => ({type: ADD_POST_TO_STATE})
+
+export const textUpdatingActionCreator = (text) => ({type: TEXT_UPDATING, value: text})
+
+export const sendNewMessageActionCreator = () => ({type: SEND_NEW_MESSAGE})
+
+export const updateMessageActionCreator = (text) => ({
+    type: UPDATE_MESSAGE_TEXT, newText: text
+})
+window.store = store.getState()
 
 export default store;

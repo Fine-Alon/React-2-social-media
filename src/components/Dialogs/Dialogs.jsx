@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Dialogs.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import {sendNewMessageActionCreator, updateMessageActionCreator} from "../../Redux/state";
 
 // const isActiveDialog = ({isActive}) => isActive ? style.active : style.dialog
 
@@ -10,14 +11,15 @@ const Dialogs = (props) => {
 
     let messagesElements = props.dialogPage.messages.map((m) => (<Message name={m.name}/>))
 
-    let areaMessages = React.createRef()
+    let newMessageBody = props.dialogPage.currentText
+
 
     let sendMessage = () => {
-        props.sendNewMessage()
+        props.dispatch(sendNewMessageActionCreator())
     }
-    let changeMessageText = () => {
-       let text = areaMessages.current.value
-           props.updateMessageText(text)
+    let changeMessageText = (e) => {
+        let text = e.target.value
+        props.dispatch(updateMessageActionCreator(text))
     }
 
     return (
@@ -28,7 +30,7 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messagesElements}
                 <div className={style.flex_colomn}>
-                    <textarea ref={areaMessages} onChange={changeMessageText} value={props.dialogPage.currentText}/>
+                    <textarea placeholder={'enter your message..'} onChange={changeMessageText} value={newMessageBody}/>
                     <button onClick={sendMessage}>add message</button>
                 </div>
             </div>
