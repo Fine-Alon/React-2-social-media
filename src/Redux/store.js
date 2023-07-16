@@ -4,7 +4,7 @@ import reducerFriendsPage from "./reducer_friendPage";
 
 let store = {
     _callSubscriber() {
-        console.log('state changed')
+        console.log('state changed and waiting for replacing by RENDER Fnc.')
     },
     _state: {
         friendPage: {
@@ -52,6 +52,8 @@ let store = {
         return this._state
     },
     setSubscribe(observe) {
+        console.log('we did this Subscriber get rid of cyclic dependency between store.js & index.js by' +
+            'passing as an setSubscriber arg. the render(state) fnc.')
         this._callSubscriber = observe
     },
     dispatch(action) {
