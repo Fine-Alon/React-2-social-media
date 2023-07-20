@@ -7,9 +7,9 @@ import Music from "./components/Music/Music";
 import {Route, Routes} from "react-router-dom";
 import style from './App.module.css'
 import News from "./components/News/News";
-import Dialogs from "./components/Dialogs/Dialogs";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
     let friendPage = {
@@ -36,10 +36,8 @@ const App = (props) => {
             <NavBar/>
             <div className={style.app_wrapper_content}>
                 <Routes>
-                    <Route path={'/profile'} element={<Profile dispatch={props.store.dispatch.bind(props.store)}
-                                                               profilePage={props.store.getState().profilePage}/>}/>
-                    <Route path='/dialogs' element={<Dialogs dialogPage={props.store.getState().dialogPage}
-                                                             dispatch={props.store.dispatch.bind(props.store)}/>}/>
+                    <Route path={'/profile'} element={<Profile/>}/>
+                    <Route path='/dialogs' element={<DialogsContainer/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

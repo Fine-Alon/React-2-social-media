@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="609af418-1909-4206-a9d8-97296fcf9979" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_dialogPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_dialogPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/reducer_profilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_profilePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +46,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Андрей/Desktop/React-2-social-media/src/Redux&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Андрей/Desktop/React-2-social-media/src/components/Profile/MyPosts&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -59,11 +58,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Profile\MyPosts" />
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Dialogs" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\Redux" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friends" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Dialogs\Message" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\draw_layout_of_proj\step_1_MyOwnRedux" />
@@ -89,7 +88,9 @@
       <workItem from="1689122042590" duration="18639000" />
       <workItem from="1689271227143" duration="9391000" />
       <workItem from="1689351110963" duration="21748000" />
-      <workItem from="1689448467259" duration="18156000" />
+      <workItem from="1689448467259" duration="18735000" />
+      <workItem from="1689730968774" duration="4670000" />
+      <workItem from="1689796367462" duration="11934000" />
     </task>
     <servers />
   </component>

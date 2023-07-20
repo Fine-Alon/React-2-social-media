@@ -1,23 +1,20 @@
 import React from 'react'
 import style from './MyPosts.module.css'
 import Post from './Post/Post';
-import {addPostActionCreator, textUpdatingActionCreator} from "../../../Redux/reducer_profilePage";
-
-
 
 const MyPosts = (props) => {
+
     let postInfoComps = props.postInfo.map((p) => (<Post key={p.id} likesCount={p.countOfLikes} message={p.message}/>))
 
     let newPostElement = React.createRef()
 
     let addPostBtn = () => {
-        props.dispatch(addPostActionCreator())
+        props.addPostBtn()
     }
 
     let onTextChange = () => {
-        let text = newPostElement.current.value
-        let action = textUpdatingActionCreator(text);
-        props.dispatch(action)
+       let textBody = newPostElement.current.value
+        props.onTextChange(textBody)
     }
 
     return (
