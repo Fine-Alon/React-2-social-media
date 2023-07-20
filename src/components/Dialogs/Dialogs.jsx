@@ -28,7 +28,8 @@ const Dialogs = (props) => {
             <div className={style.messages}>
                 {messagesElements}
                 <div className={style.flex_colomn}>
-                    <textarea placeholder={'enter your message..'} onChange={changeMessageText} value={newMessageBody}/>
+                    <textarea placeholder={'enter your message..'}
+                              onChange={changeMessageText} value={newMessageBody}/>
                     <button onClick={sendMessage}>add message</button>
                 </div>
             </div>
