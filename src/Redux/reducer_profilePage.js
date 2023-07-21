@@ -14,12 +14,16 @@ const reducerProfilePage = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST_TO_STATE:
             let newPost = {id: '4', countOfLikes: 0, message: state.messageToPost}
-            state.postInfo.push(newPost)
-            state.messageToPost = ''
-            return state;
+            return {
+                ...state,
+                postInfo: [...state.postInfo, newPost],
+                messageToPost: '',
+            }
         case TEXT_UPDATING:
-            state.messageToPost = action.value
-            return state;
+            return {
+                ...state,
+                messageToPost: action.value
+            }
         default:
             return state;
     }

@@ -21,13 +21,18 @@ const initialState = {
 const reducerDialogPage = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_MESSAGE_TEXT:
-            state.currentText = action.newText
-             return state;
-        case SEND_NEW_MESSAGE:
+            return {
+                ...state,
+                currentText: action.newText
+            }
+        case SEND_NEW_MESSAGE: {
             let text = state.currentText
-            state.messages.push({id: '4', name: text})
-            state.currentText = ''
-             return state;
+            return {
+                ...state,
+                currentText: '',
+                messages: [...state.messages, {id: '4', name: text}]
+            }
+        }
         default:
             return state;
     }

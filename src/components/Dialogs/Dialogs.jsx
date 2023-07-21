@@ -6,9 +6,9 @@ import Message from "./Message/Message";
 // const isActiveDialog = ({isActive}) => isActive ? style.active : style.dialog
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogs.map((d) => (<Dialog name={d.name} id={d.id}/>))
+    let dialogsElements = props.dialogs.map((d) => (<Dialog key={d.id} name={d.name} id={d.id}/>))
 
-    let messagesElements = props.messages.map((m) => (<Message name={m.name}/>))
+    let messagesElements = props.messages.map((m) => (<Message key={m.id} name={m.name}/>))
 
     let newMessageBody = props.currentText
 
