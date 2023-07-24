@@ -1,17 +1,16 @@
 .dialogs {
     grid-area: c;
-    background-color: #41610c;
     display: grid;
     grid-template-columns: 2fr 8fr;
 }
 
 .dialogs_item {
-    background-color: #e3f6fc;
+    background-color: #dee3ff;
     padding: 5px;
 }
 
 .messages {
-    background-color: #d2cdcd;
+    background-color: #fff1f1;
     padding: 5px;
     flex-direction: column;
 }
