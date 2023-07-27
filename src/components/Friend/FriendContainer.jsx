@@ -1,12 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ACFollowUser, ACSetUser, ACUnFollowUser} from "../../Redux/reducer_friendPage";
+import {ACFollowUser, ACSetCurrentPage, ACSetUser, ACUnFollowUser} from "../../Redux/reducer_friendPage";
 import Friend from "./Friend";
 
 
 let mapStateToProps = (state) => {
     return {
-        users: state.friendsPage.users
+        users: state.friendsPage.users,
+        countPerPage: state.friendsPage.countPerPage,
+        totalUsersCount: state.friendsPage.totalUsersCount,
+        currentPage: state.friendsPage.currentPage
     }
 }
 
@@ -20,10 +23,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         setUsers: (users) => {
             dispatch(ACSetUser(users))
+        },
+        setCurrentPage: (currentPage) => {
+            dispatch(ACSetCurrentPage(currentPage))
         }
     }
 }
-
 
 let FriendContainer = connect(mapStateToProps, mapDispatchToProps)(Friend)
 

@@ -7,16 +7,31 @@ import userPhoto from "../../assets/img/users_ava.png"
 class Friend extends React.Component {
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/` +
+            `users?count=${this.props.countPerPage}&page=${this.props.currentPage}`)
             .then(response => {
-            this.props.setUsers(response.data.items)
-        })
+                this.props.setUsers(response.data.items)
+            })
     }
 
     render() {
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.countPerPage)
+        let pagesButtons = []
+        for (let i = 1; i < pagesCount + 1; i++) {
+            pagesButtons.push(i)
+        }
+
         return <div className={styles.users_section}>
             <h3>Users</h3>
+
             <ul>
+                <div>
+                    {pagesButtons.map(p => {
+                        return <span onClick={() => {this.props.setCurrentPage(p)}}
+                                     className={this.props.currentPage === p? styles.currentPage:''}>
+                            {p}</span>
+                    })}
+                </div>
                 {
                     this.props.users.map(u =>
                         <li className={styles.friend} key={u.id}>
@@ -34,7 +49,7 @@ class Friend extends React.Component {
                             </div>
                             <div className={styles.friend_right_side}>
                                 <div className={styles.friend_right_side_top}>
-                                    <span>{u.fullName}</span>
+                                    <span>{u.name}</span>
                                     <p>{u.status}</p>
                                 </div>
                                 <div className={styles.friend_right_side_bottom}>

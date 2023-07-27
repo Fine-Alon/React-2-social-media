@@ -71,3 +71,7 @@
 .friend_right_side_bottom span {
     font-size: 14px;
 }
+
+.currentPage{
+    font-weight: bolder;
+}
