@@ -14,7 +14,7 @@ const NavBar = (props) => {
                 <div><NavLink className={isActiveLink} to='/news'>News</NavLink></div>
                 <div><NavLink className={isActiveLink} to='/music'>Music</NavLink></div>
                 <div className={styles.friendBox}>
-                    <NavLink className={isActiveLink} to='/friend'>Find Friends</NavLink>
+                    <NavLink className={isActiveLink} to='/friends'>Find Friends</NavLink>
                 </div>
                 <div><NavLink className={isActiveLink} to='/settings'>Settings</NavLink></div>
             </nav>

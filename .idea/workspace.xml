@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="609af418-1909-4206-a9d8-97296fcf9979" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Friend/Friend.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Friend/Friend.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/redux_store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/redux_store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Friends/Friend/Friend.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Friends/Friend/Friend.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Friends/Friends.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Friends/Friends.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Friend/Friend.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NavBar/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar/NavBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar/NavBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar/NavBar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +43,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "js.last.introduce.type": "CONST",
-    "last_opened_file_path": "C:/Users/Андрей/Desktop/React-2-social-media/src/assets/img",
+    "last_opened_file_path": "C:/Users/Андрей/Desktop/React-2-social-media/src/components/Friend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,11 +55,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friend" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\assets\img" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friends\Friend" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friends" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\draw_layout_of_proj\step_1_MyOwnRedux" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\draw_layout_of_proj\step_2_Redux_connect_context" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components" />
@@ -105,7 +92,8 @@
       <workItem from="1689868968323" duration="9803000" />
       <workItem from="1689958414891" duration="17535000" />
       <workItem from="1690058890095" duration="13619000" />
-      <workItem from="1690200037693" duration="6608000" />
+      <workItem from="1690200037693" duration="7562000" />
+      <workItem from="1690393546935" duration="7166000" />
     </task>
     <servers />
   </component>
