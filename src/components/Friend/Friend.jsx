@@ -11,13 +11,24 @@ class Friend extends React.Component {
             `users?count=${this.props.countPerPage}&page=${this.props.currentPage}`)
             .then(response => {
                 this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
+    }
+
+    onPageChanged = (p) => {
+        this.props.setCurrentPage(p)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/` +
+            `users?count=${this.props.countPerPage}&page=${this.props.currentPage}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
             })
     }
 
     render() {
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.countPerPage)
         let pagesButtons = []
-        for (let i = 1; i < pagesCount + 1; i++) {
+        for (let i = 1; i < 10 + 1; i++) {
             pagesButtons.push(i)
         }
 
@@ -25,11 +36,13 @@ class Friend extends React.Component {
             <h3>Users</h3>
 
             <ul>
-                <div>
+                <div className={styles.pages}>
                     {pagesButtons.map(p => {
-                        return <span onClick={() => {this.props.setCurrentPage(p)}}
-                                     className={this.props.currentPage === p? styles.currentPage:''}>
-                            {p}</span>
+                        return <span onClick={() => {
+                            this.onPageChanged(p)
+                        }}
+                                     className={this.props.currentPage === p ? styles.currentPage : ''}>
+                            {p},</span>
                     })}
                 </div>
                 {

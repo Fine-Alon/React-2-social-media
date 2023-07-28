@@ -1,6 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ACFollowUser, ACSetCurrentPage, ACSetUser, ACUnFollowUser} from "../../Redux/reducer_friendPage";
+import {
+    ACFollowUser,
+    ACSetCurrentPage,
+    ACSetTotalUsersCount,
+    ACSetUser,
+    ACUnFollowUser
+} from "../../Redux/reducer_friendPage";
 import Friend from "./Friend";
 
 
@@ -9,7 +15,7 @@ let mapStateToProps = (state) => {
         users: state.friendsPage.users,
         countPerPage: state.friendsPage.countPerPage,
         totalUsersCount: state.friendsPage.totalUsersCount,
-        currentPage: state.friendsPage.currentPage
+        currentPage: state.friendsPage.currentPage,
     }
 }
 
@@ -26,7 +32,10 @@ let mapDispatchToProps = (dispatch) => {
         },
         setCurrentPage: (currentPage) => {
             dispatch(ACSetCurrentPage(currentPage))
-        }
+        },
+        setTotalUsersCount: (totalUsersCount) => {
+            dispatch(ACSetTotalUsersCount(totalUsersCount))
+        },
     }
 }
 

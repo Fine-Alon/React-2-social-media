@@ -5,12 +5,13 @@ const UNFOLLOW_USER = 'UNFOLLOW_USER'
 const SHOW_MORE_BTN = 'SHOW_MORE_BTN'
 const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const TOTAL_USER_COUNT = 'TOTAL_USER_COUNT'
 
 let initialState = {
     users: [],
-    countPerPage: 4,
-    totalUsersCount: 18,
-    currentPage: 4,
+    countPerPage: 5,
+    totalUsersCount: 0,
+    currentPage: 1,
 }
 
 const reducerFriendsPage = (state = initialState, action) => {
@@ -45,6 +46,11 @@ const reducerFriendsPage = (state = initialState, action) => {
                 ...state,
                 currentPage: action.currentPage
             }
+        case TOTAL_USER_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.count
+            }
         case SHOW_MORE_BTN :
             return state;
         default:
@@ -55,7 +61,8 @@ const reducerFriendsPage = (state = initialState, action) => {
 export let ACFollowUser = (userId) => ({type: FOLLOW_USER, userId})
 export let ACUnFollowUser = (userId) => ({type: UNFOLLOW_USER, userId})
 export let ACSetUser = (users) => ({type: SET_USERS, users})
-export let ACSetCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage:currentPage})
+export let ACSetCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
+export let ACSetTotalUsersCount = (totalUsersCount) => ({type: TOTAL_USER_COUNT, count: totalUsersCount})
 export let ACShowMoreBtn = () => ({type: SHOW_MORE_BTN})
 
 export default reducerFriendsPage
