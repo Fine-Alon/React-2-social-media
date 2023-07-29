@@ -1,5 +1,7 @@
-const ADD_POST_TO_STATE = 'ADD-POST-TO-STATE'
-const TEXT_UPDATING = 'TEXT-UPDATING'
+const ADD_POST_TO_STATE = 'ADD_POST_TO_STATE'
+const TEXT_UPDATING = 'TEXT_UPDATING'
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
+
 
 let initialState = {
     postInfo: [
@@ -7,7 +9,10 @@ let initialState = {
         {id: '2', countOfLikes: 43, message: 'This is my first post'},
         {id: '3', countOfLikes: 25, message: 'so how are u today'},
     ],
-    messageToPost: 'AlonMMA'
+    messageToPost: 'AlonMMA',
+    userProfile: null,
+
+
 }
 
 const reducerProfilePage = (state = initialState, action) => {
@@ -24,6 +29,11 @@ const reducerProfilePage = (state = initialState, action) => {
                 ...state,
                 messageToPost: action.value
             }
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                userProfile: action.userProfile
+            }
         default:
             return state;
     }
@@ -32,5 +42,6 @@ const reducerProfilePage = (state = initialState, action) => {
 export const addPostActionCreator = () => ({type: ADD_POST_TO_STATE})
 
 export const textUpdatingActionCreator = (text) => ({type: TEXT_UPDATING, value: text})
+export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
 
 export default reducerProfilePage;
