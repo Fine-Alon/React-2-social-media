@@ -16,6 +16,7 @@ let initialState = {
 }
 
 const reducerProfilePage = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_POST_TO_STATE:
             let newPost = {id: '4', countOfLikes: 0, message: state.messageToPost}

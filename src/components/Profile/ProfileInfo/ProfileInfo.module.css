@@ -1,5 +1,5 @@
 
-.content img {
+.contentImg {
     height: 280px;
     width: 100%;
     object-fit: cover;
@@ -9,4 +9,26 @@
 
 .data{
     padding: 10px;
+}
+
+.avatar{
+    width: 70px;
+    border-radius: 50%;
+}
+
+.contacts li{
+    width: fit-content;
+    margin-bottom: 3px;
+    margin-left: 5px;
+    background-color: rgba(245, 175, 188, 0.93);
+}
+
+.isWork img{
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.isWork{
+    margin-bottom: 10px;
 }

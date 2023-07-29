@@ -9,15 +9,13 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0//profile/2`)
             .then(response => {
-                debugger
-                console.log(response.data)
-                this.props.setUserProfile(response)
+                this.props.setUserProfile(response.data)
             })
     }
 
     render() {
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props} userProfile={this.props.userProfile} />
         )
     }
 }

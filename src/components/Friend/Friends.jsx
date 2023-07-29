@@ -24,7 +24,7 @@ const Friends = (props) => {
                             {p},</span>
                 })}
             </div>
-            {props.isFetching ? <Preloader/> : null}
+            {props.isFetching ? <Preloader width={{width:"120px"}}/> : null}
             {
                 props.users.map(u =>
                     <li className={styles.friend} key={u.id}>

@@ -4,10 +4,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
-    debugger
+
     return (
         <body className={style.content}>
-        <ProfileInfo props={props}/>
+        <ProfileInfo userProfile={props.userProfile}/>
         <MyPostsContainer/>
         </body>
     )

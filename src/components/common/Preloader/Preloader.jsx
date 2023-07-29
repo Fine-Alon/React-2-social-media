@@ -4,7 +4,7 @@ import React from "react";
 const Preloader = (props)=>{
     return(
         <div >
-            {<img style={{width:"120px"}}  src={fetchLoading} />}
+            {<img style={props.width}  src={fetchLoading} />}
         </div>
     )
 }
