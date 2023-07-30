@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './NavBar.module.css'
-import {Link, NavLink, Outlet} from "react-router-dom";
+import { NavLink, Outlet} from "react-router-dom";
 
 const isActiveLink = ({isActive}) => isActive ? styles.active : ''
 const NavBar = (props) => {

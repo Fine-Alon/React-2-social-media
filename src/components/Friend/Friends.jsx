@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Friend.module.css"
 import userPhoto from "../../assets/img/users_ava.png"
 import Preloader from "../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 const Friends = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
@@ -24,14 +25,16 @@ const Friends = (props) => {
                             {p},</span>
                 })}
             </div>
-            {props.isFetching ? <Preloader width={{width:"120px"}}/> : null}
+            {props.isFetching ? <Preloader width={{width: "120px"}}/> : null}
             {
                 props.users.map(u =>
                     <li className={styles.friend} key={u.id}>
                         <div className={styles.friend_left_side}>
-                            <img className={styles.ava}
-                                 src={u.photos.small ? u.photos.small : userPhoto}
-                                 alt="friends"/>
+                            <NavLink to={'/profile' + u.id}>
+                                <img className={styles.ava}
+                                     src={u.photos.small ? u.photos.small : userPhoto}
+                                     alt="friends"/>
+                            </NavLink>
                             {u.followed
                                 ? <button onClick={() => {
                                     props.unFollow(u.id)
