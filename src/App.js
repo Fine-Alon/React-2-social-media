@@ -10,11 +10,12 @@ import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendContainer from "./components/Friend/FriendContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
     return (
         <div className={style.app_wrapper}>
-            <Header/>
+            <HeaderContainer/>
             <NavBar/>
             <div className={style.app_wrapper_content}>
                 <Routes>

@@ -11,8 +11,6 @@ let initialState = {
     ],
     messageToPost: 'AlonMMA',
     userProfile: null,
-
-
 }
 
 const reducerProfilePage = (state = initialState, action) => {
