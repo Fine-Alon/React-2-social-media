@@ -15,7 +15,9 @@ class FriendsContainer extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/` +
-            `users?count=${this.props.countPerPage}&page=${this.props.currentPage}`)
+            `users?count=${this.props.countPerPage}&page=${this.props.currentPage}`,{
+            withCredentials:true
+        })
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setIsFetching(false)
@@ -27,7 +29,9 @@ class FriendsContainer extends React.Component {
         this.props.setCurrentPage(pageNumber)
         this.props.setIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/` +
-            `users?count=${this.props.countPerPage}&page=${pageNumber}`)
+            `users?count=${this.props.countPerPage}&page=${pageNumber}`,{
+            withCredentials:true
+        })
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setIsFetching(false)

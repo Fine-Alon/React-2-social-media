@@ -3,6 +3,7 @@ import styles from "./Friend.module.css"
 import userPhoto from "../../assets/img/users_ava.png"
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const Friends = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
@@ -20,9 +21,10 @@ const Friends = (props) => {
                 {pagesButtons.map(p => {
                     return <span onClick={() => {
                         props.onPageChanged(p)
-                    }}
-                                 className={props.currentPage === p ? styles.currentPage : ''}>
-                            {p},</span>
+                    }} className={props.currentPage === p
+                        ? styles.currentPage
+                        : ''}>{p},
+                    </span>
                 })}
             </div>
             {props.isFetching ? <Preloader width={{width: "120px"}}/> : null}
@@ -37,10 +39,32 @@ const Friends = (props) => {
                             </NavLink>
                             {u.followed
                                 ? <button onClick={() => {
-                                    props.unFollow(u.id)
+
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": 'c3aa41e6-2952-4023-bbfe-5c1ef7821263'
+                                        }
+                                    }).then(response => {
+                                        if (response.data.resultCode == 0) {
+                                            props.unFollow(u.id)
+                                        }
+                                    })
+
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
-                                    props.followUser(u.id)
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": 'c3aa41e6-2952-4023-bbfe-5c1ef7821263'
+                                        }
+                                    }).then(response => {
+                                        if (response.data.resultCode == 0) {
+                                            props.followUser(u.id)
+                                        }
+                                    })
+
                                 }}>Follow</button>}
                         </div>
                         <div className={styles.friend_right_side}>
