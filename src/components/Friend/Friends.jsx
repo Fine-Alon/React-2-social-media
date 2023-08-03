@@ -3,13 +3,13 @@ import styles from "./Friend.module.css"
 import userPhoto from "../../assets/img/users_ava.png"
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {deleteFollowerUser, postFollowUser} from "../../api/api";
+import {deleteFollowerUser, postFollowUser, usersAPI} from "../../api/api";
 
 const Friends = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
     let pagesButtons = []
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 12; i <= 25; i++) {
         pagesButtons.push(i)
     }
 
@@ -40,14 +40,14 @@ const Friends = (props) => {
                             {u.followed
 
                                 ? <button onClick={() => {
-                                    deleteFollowerUser(u.id).then(response => {
+                                    usersAPI.deleteFollowerUser(u.id).then(response => {
                                         if (response.resultCode == 0) props.unFollow(u.id)
                                     })
 
                                 }}>Unfollow</button>
 
                                 : <button onClick={() => {
-                                    postFollowUser(u.id).then(response => {
+                                    usersAPI.postFollowUser(u.id).then(response => {
                                         if (response.resultCode == 0) props.followUser(u.id)
                                     })
 

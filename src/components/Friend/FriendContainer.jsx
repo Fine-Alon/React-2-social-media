@@ -8,13 +8,13 @@ import {
     ACUnFollowUser
 } from "../../Redux/reducer_friendPage";
 import Friends from "./Friends";
-import {getUsers} from "../../api/api";
+import {getUsers, usersAPI} from "../../api/api";
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.setIsFetching(true)
-        getUsers(this.props.countPerPage,this.props.currentPage)
+        usersAPI.getUsers(this.props.countPerPage,this.props.currentPage)
             .then(response => {
                 this.props.setUsers(response.items)
                 this.props.setIsFetching(false)
@@ -25,7 +25,7 @@ class FriendsContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
         this.props.setIsFetching(true)
-        getUsers(this.props.countPerPage,pageNumber).then(response => {
+        usersAPI.getUsers(this.props.countPerPage,pageNumber).then(response => {
                 this.props.setUsers(response.items)
                 this.props.setIsFetching(false)
             })
