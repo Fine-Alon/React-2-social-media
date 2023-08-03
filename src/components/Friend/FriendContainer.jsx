@@ -7,33 +7,26 @@ import {
     ACSetUser,
     ACUnFollowUser
 } from "../../Redux/reducer_friendPage";
-import axios from "axios";
 import Friends from "./Friends";
+import {getUsers} from "../../api/api";
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/` +
-            `users?count=${this.props.countPerPage}&page=${this.props.currentPage}`,{
-            withCredentials:true
-        })
+        getUsers(this.props.countPerPage,this.props.currentPage)
             .then(response => {
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(response.items)
                 this.props.setIsFetching(false)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setTotalUsersCount(response.totalCount)
             })
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
         this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/` +
-            `users?count=${this.props.countPerPage}&page=${pageNumber}`,{
-            withCredentials:true
-        })
-            .then(response => {
-                this.props.setUsers(response.data.items)
+        getUsers(this.props.countPerPage,pageNumber).then(response => {
+                this.props.setUsers(response.items)
                 this.props.setIsFetching(false)
             })
     }

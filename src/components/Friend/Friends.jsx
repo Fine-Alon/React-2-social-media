@@ -3,7 +3,7 @@ import styles from "./Friend.module.css"
 import userPhoto from "../../assets/img/users_ava.png"
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {deleteFollowerUser, postFollowUser} from "../../api/api";
 
 const Friends = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
@@ -38,34 +38,21 @@ const Friends = (props) => {
                                      alt="friends"/>
                             </NavLink>
                             {u.followed
-                                ? <button onClick={() => {
 
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": 'c3aa41e6-2952-4023-bbfe-5c1ef7821263'
-                                        }
-                                    }).then(response => {
-                                        if (response.data.resultCode == 0) {
-                                            props.unFollow(u.id)
-                                        }
+                                ? <button onClick={() => {
+                                    deleteFollowerUser(u.id).then(response => {
+                                        if (response.resultCode == 0) props.unFollow(u.id)
                                     })
 
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
 
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": 'c3aa41e6-2952-4023-bbfe-5c1ef7821263'
-                                        }
-                                    }).then(response => {
-                                        if (response.data.resultCode == 0) {
-                                            props.followUser(u.id)
-                                        }
+                                : <button onClick={() => {
+                                    postFollowUser(u.id).then(response => {
+                                        if (response.resultCode == 0) props.followUser(u.id)
                                     })
 
                                 }}>Follow</button>}
+
                         </div>
                         <div className={styles.friend_right_side}>
                             <div className={styles.friend_right_side_top}>
