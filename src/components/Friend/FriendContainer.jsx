@@ -1,34 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    ACFollowUser, ACIsFetching,
-    ACSetCurrentPage,
-    ACSetTotalUsersCount,
-    ACSetUser,
-    ACUnFollowUser
+    ACToggleFollowingProgress, deleteFollower, followConfirm, getUsers, subscribeFollower, unfollowConfirm
 } from "../../Redux/reducer_friendPage";
 import Friends from "./Friends";
-import {getUsers, usersAPI} from "../../api/api";
+import {compose} from "redux";
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.setIsFetching(true)
-        usersAPI.getUsers(this.props.countPerPage,this.props.currentPage)
-            .then(response => {
-                this.props.setUsers(response.items)
-                this.props.setIsFetching(false)
-                this.props.setTotalUsersCount(response.totalCount)
-            })
+        this.props.getUsers(this.props.countPerPage, this.props.currentPage)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.setIsFetching(true)
-        usersAPI.getUsers(this.props.countPerPage,pageNumber).then(response => {
-                this.props.setUsers(response.items)
-                this.props.setIsFetching(false)
-            })
+        this.props.getUsers(this.props.countPerPage, pageNumber)
     }
 
     render() {
@@ -37,10 +22,15 @@ class FriendsContainer extends React.Component {
                         countPerPage={this.props.countPerPage}
                         onPageChanged={this.onPageChanged}
                         currentPage={this.props.currentPage}
-                        followUser={this.props.followUser}
-                        unFollow={this.props.unFollow}
+                        followConfirm={this.props.followConfirm}
+                        unfollowConfirm={this.props.unfollowConfirm}
                         followed={this.props.followed}
-                        isFetching={this.props.isFetching}/>
+                        isFetching={this.props.isFetching}
+                        toggleFollowingProgress={this.props.toggleFollowingProgress}
+                        followingProgress={this.props.followingProgress}
+                        deleteFollower={this.props.deleteFollower}
+                        subscribeFollower={this.props.subscribeFollower}
+        />
     }
 }
 
@@ -51,31 +41,34 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.friendsPage.totalUsersCount,
         currentPage: state.friendsPage.currentPage,
         isFetching: state.friendsPage.isFetching,
+        followingProgress: state.friendsPage.followingProgress,
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        followUser: (userId) => {
-            dispatch(ACFollowUser(userId))
+        followConfirm: (userId) => {
+            dispatch(followConfirm(userId))
         },
-        unFollow: (userId) => {
-            dispatch(ACUnFollowUser(userId))
+        unfollowConfirm: (userId) => {
+            dispatch(unfollowConfirm(userId))
         },
-        setUsers: (users) => {
-            dispatch(ACSetUser(users))
+        toggleFollowingProgress: (isFetching, id) => {
+            dispatch(ACToggleFollowingProgress(isFetching, id))
         },
-        setCurrentPage: (currentPage) => {
-            dispatch(ACSetCurrentPage(currentPage))
+        getUsers: (countPerPage, currentPage) => {
+            dispatch(getUsers(countPerPage, currentPage))
         },
-        setTotalUsersCount: (totalUsersCount) => {
-            dispatch(ACSetTotalUsersCount(totalUsersCount))
-        },
-        setIsFetching: (isFetching) => {
-            dispatch(ACIsFetching(isFetching))
+        deleteFollower: (userId) => {
+            dispatch(deleteFollower(userId))
+        }
+        ,subscribeFollower: (userId) => {
+            dispatch(subscribeFollower(userId))
         },
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+)(FriendsContainer)
 

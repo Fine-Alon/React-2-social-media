@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const ADD_POST_TO_STATE = 'ADD_POST_TO_STATE'
 const TEXT_UPDATING = 'TEXT_UPDATING'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -39,8 +41,16 @@ const reducerProfilePage = (state = initialState, action) => {
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST_TO_STATE})
-
 export const textUpdatingActionCreator = (text) => ({type: TEXT_UPDATING, value: text})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
+
+export const getProfileInfo = (userId) => {
+    return (dispatcher, getState) => {
+        usersAPI.getProfileInfo(userId)
+            .then(response => {
+                dispatcher(setUserProfile(response))
+            })
+    }
+}
 
 export default reducerProfilePage;

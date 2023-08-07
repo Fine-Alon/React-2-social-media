@@ -12,13 +12,15 @@ const ProfileInfo = (props) => {
 
     return (
         <div className={style.content}>
-            <div>
+      {/*      <div>
                 <img className={style.contentImg} alt='Emage'
                      src="https://cdn.dribbble.com/userupload/8221626/file/original-13466c8aa976555e1dfe0dd947239391.jpg?compress=1&resize=752x"/>
-            </div>
+            </div>*/}
 
             <div className={style.data}>
-                <img className={style.avatar} src={props.userProfile.photos.large}/>
+                {props.userProfile.photos.large ? <img className={style.avatar} src={props.userProfile.photos.large}/>
+                    : <img className={style.avatar} src="https://cdn.dribbble.com/userupload/9066333/file/original-b77ad6740798ed3ddb5f01e51c821124.png?resize=840x630&vertical=center" alt="profile pic"/>
+                }
             </div>
             <p>{props.userProfile.aboutMe}</p>
             <ul className={style.contacts}>

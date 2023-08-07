@@ -3,7 +3,6 @@ import styles from "./Friend.module.css"
 import userPhoto from "../../assets/img/users_ava.png"
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {deleteFollowerUser, postFollowUser, usersAPI} from "../../api/api";
 
 const Friends = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
@@ -39,19 +38,17 @@ const Friends = (props) => {
                             </NavLink>
                             {u.followed
 
-                                ? <button onClick={() => {
-                                    usersAPI.deleteFollowerUser(u.id).then(response => {
-                                        if (response.resultCode == 0) props.unFollow(u.id)
-                                    })
+                                ? <button disabled={props.followingProgress.includes(u.id)}
+                                          onClick={() => {
+                                              props.deleteFollower(u.id)
+                                          }}>
+                                    Unfollow</button>
 
-                                }}>Unfollow</button>
-
-                                : <button onClick={() => {
-                                    usersAPI.postFollowUser(u.id).then(response => {
-                                        if (response.resultCode == 0) props.followUser(u.id)
-                                    })
-
-                                }}>Follow</button>}
+                                : <button disabled={props.followingProgress.includes(u.id)}
+                                          onClick={() => {
+                                              props.subscribeFollower(u.id)
+                                          }}>
+                                    Follow</button>}
 
                         </div>
                         <div className={styles.friend_right_side}>

@@ -1,4 +1,4 @@
-import {type} from "@testing-library/user-event/dist/type";
+import {usersAPI} from "../api/api";
 
 const FOLLOW_USER = 'FOLLOW_USER'
 const UNFOLLOW_USER = 'UNFOLLOW_USER'
@@ -7,6 +7,7 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const TOTAL_USER_COUNT = 'TOTAL_USER_COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
 let initialState = {
     users: [],
@@ -14,6 +15,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 12,
     isFetching: true,
+    followingProgress: [],
 }
 
 const reducerFriendsPage = (state = initialState, action) => {
@@ -58,6 +60,13 @@ const reducerFriendsPage = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingProgress: action.isFetch
+                    ? [...state.followingProgress, action.userId]
+                    : state.followingProgress.filter(id => id != action.userId)
+            }
         case SHOW_MORE_BTN :
             return state;
         default:
@@ -65,12 +74,48 @@ const reducerFriendsPage = (state = initialState, action) => {
     }
 }
 
-export let ACFollowUser = (userId) => ({type: FOLLOW_USER, userId})
-export let ACUnFollowUser = (userId) => ({type: UNFOLLOW_USER, userId})
+export let followConfirm = (userId) => ({type: FOLLOW_USER, userId})
+export let unfollowConfirm = (userId) => ({type: UNFOLLOW_USER, userId})
 export let ACSetUser = (users) => ({type: SET_USERS, users})
 export let ACSetCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
 export let ACSetTotalUsersCount = (totalUsersCount) => ({type: TOTAL_USER_COUNT, count: totalUsersCount})
-export let ACIsFetching = (isFetching) => {return   {type: TOGGLE_IS_FETCHING, isFetching}}
+export let ACIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export let ACToggleFollowingProgress = (isFetch, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetch, userId})
 export let ACShowMoreBtn = () => ({type: SHOW_MORE_BTN})
+
+export const getUsers = (countPerPage, currentPage) => {
+
+    return (dispatch, getState) => {
+
+        dispatch(ACIsFetching(true))
+        usersAPI.getUsers(countPerPage, currentPage)
+            .then(response => {
+                dispatch(ACSetUser(response.items))
+                dispatch(ACIsFetching(false))
+                dispatch(ACSetTotalUsersCount(response.totalCount))
+            })
+    }
+}
+
+export const deleteFollower = (userId) => {
+
+    return (dispatch, getState) => {
+        dispatch(ACToggleFollowingProgress(true, userId))
+        usersAPI.unsubscribeUser(userId).then(response => {
+            if (response.resultCode == 0) dispatch(unfollowConfirm(userId))
+            dispatch(ACToggleFollowingProgress(false, userId))
+        })
+    }
+}
+export const subscribeFollower = (userId) => {
+
+    return (dispatch, getState) => {
+        dispatch(ACToggleFollowingProgress(true, userId))
+        usersAPI.subscribeUser(userId).then(response => {
+            if (response.resultCode == 0) dispatch(followConfirm(userId))
+            dispatch(ACToggleFollowingProgress(false, userId))
+        })
+    }
+}
 
 export default reducerFriendsPage
