@@ -6,7 +6,6 @@ import luckySmile from "../../../assets/img/luckySmile.png";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
-
     if (!props.userProfile) {
         return <Preloader width={{width: "100%"}}/>
     }
@@ -24,8 +23,10 @@ const ProfileInfo = (props) => {
                            src="https://cdn.dribbble.com/userupload/9066333/file/original-b77ad6740798ed3ddb5f01e51c821124.png?resize=840x630&vertical=center"
                            alt="profile pic"/>
                 }
+                <ProfileStatus updateStatus={props.updateStatus} userStatus={props.userStatus}/>
             </div>
-            <ProfileStatus status={'status is no status'} />
+
+
             <p>{props.userProfile.aboutMe}</p>
             <ul className={style.contacts}>
                 contacts:
