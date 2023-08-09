@@ -1,4 +1,5 @@
 import React from 'react'
+import login from "../../Login/Login";
 
 class ProfileStatus extends React.Component {
 
@@ -11,19 +12,31 @@ class ProfileStatus extends React.Component {
                 editMode: true
             }
         )
-        console.log('activateEditMode')
     }
-    deactivateEditMode = (value) => {
+    deactivateEditMode = () => {
+        console.log('1:', this.props.userStatus)
         this.setState({
                 editMode: false,
-            }
+            },
+            () => {
+                this.props.updateStatus(this.state.statusText)
+                console.log('2:', this.props.userStatus)
+            },
         )
-        this.props.updateStatus(this.state.statusText)
     }
     onStatusChange = (e) => {
         this.setState({
-            statusText: e.currentTarget.value
-        })
+                statusText: e.currentTarget.value
+            }
+        )
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.userStatus !== prevProps.userStatus) {
+            this.setState({
+                statusText: this.props.userStatus,
+            })
+        }
     }
 
     render() {
@@ -32,14 +45,14 @@ class ProfileStatus extends React.Component {
                 {this.state.editMode
                     ? <div>
                         <input type="text" autoFocus={true}
-                               onBlur={this.deactivateEditMode(this.value)}
+                               onBlur={this.deactivateEditMode}
                                value={this.state.statusText}
                                onChange={this.onStatusChange}
                         />
                     </div>
-                    :<div>
+                    : <div>
                         <span onDoubleClick={this.activateEditMode}>
-                            {this.props.userStatus}
+                            {this.props.userStatus || '-----'}
                         </span>
                     </div>
                 }

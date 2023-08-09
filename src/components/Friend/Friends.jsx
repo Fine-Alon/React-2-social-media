@@ -8,7 +8,7 @@ const Friends = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
     let pagesButtons = []
 
-    for (let i = 12; i <= 25; i++) {
+    for (let i = 22; i <= 35; i++) {
         pagesButtons.push(i)
     }
 

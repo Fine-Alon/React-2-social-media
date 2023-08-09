@@ -13,7 +13,7 @@ let initialState = {
     users: [],
     countPerPage: 5,
     totalUsersCount: 0,
-    currentPage: 12,
+    currentPage: 25,
     isFetching: true,
     followingProgress: [],
 }

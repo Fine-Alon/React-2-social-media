@@ -15,7 +15,7 @@ let initialState = {
     ],
     messageToPost: 'AlonMMA',
     userProfile: null,
-    userStatus: 'here my initial status from reducer',
+    userStatus: 'initial status from reducer',
 }
 
 const reducerProfilePage = (state = initialState, action) => {
