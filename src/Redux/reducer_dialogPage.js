@@ -1,5 +1,6 @@
-const SEND_NEW_MESSAGE = 'SEND-NEW-MESSAGE'
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT'
+const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
+const UPDATE_MESSAGE_TEXT = 'UPDATE_MESSAGE_TEXT'
+const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
 
 const initialState = {
     dialogs: [
@@ -15,33 +16,18 @@ const initialState = {
         {id: '3', name: 'who are you?'},
         {id: '4', name: 'tic ti tic'},
     ],
-    currentText: ''
 }
 
 const reducerDialogPage = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_MESSAGE_TEXT:
+        case ADD_NEW_MESSAGE:
             return {
                 ...state,
-                currentText: action.newText
+                messages: [...state.messages, {id: '5', name: action.newMessageBody}],
             }
-        case SEND_NEW_MESSAGE: {
-            let text = state.currentText
-            return {
-                ...state,
-                currentText: '',
-                messages: [...state.messages, {id: '4', name: text}]
-            }
-        }
         default:
             return state;
     }
 }
-
-export const sendNewMessageActionCreator = () => ({type: SEND_NEW_MESSAGE})
-
-export const updateMessageActionCreator = (text) => ({
-    type: UPDATE_MESSAGE_TEXT, newText: text
-})
-
+export const addNewMessageAC = (newMessageBody) => ({type: ADD_NEW_MESSAGE, newMessageBody})
 export default reducerDialogPage;

@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="609af418-1909-4206-a9d8-97296fcf9979" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_dialogPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_dialogPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/reducer_profilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_profilePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Friend/Friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Friend/Friends.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileStatus.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileStatus.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/redux_store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/redux_store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPostsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPostsContainer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +57,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Андрей/Desktop/React-2-social-media&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Андрей/Desktop/React-2-social-media/src/components&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -61,11 +69,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Profile\ProfileInfo" />
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components" />
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Login" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\Redux" />
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Profile\ProfileInfo" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Header" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Profile" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\node_modules\.bin" />
@@ -75,7 +83,7 @@
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Music" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.eject">
+  <component name="RunManager" selected="npm.start">
     <configuration name="eject" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -140,7 +148,9 @@
       <workItem from="1691437333452" duration="1633000" />
       <workItem from="1691444598267" duration="11069000" />
       <workItem from="1691521926865" duration="19634000" />
-      <workItem from="1691611581365" duration="9199000" />
+      <workItem from="1691611581365" duration="9569000" />
+      <workItem from="1691781365790" duration="20039000" />
+      <workItem from="1691954188450" duration="14380000" />
     </task>
     <servers />
   </component>

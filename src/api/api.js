@@ -1,5 +1,4 @@
 import axios from "axios";
-import login from "../components/Login/Login";
 
 const API_URI = 'https://social-network.samuraijs.com/api/1.0/'
 const API_KEY = 'c3aa41e6-2952-4023-bbfe-5c1ef7821263'
@@ -49,5 +48,19 @@ export const profileAPI = {
         return instance.get(`profile/${id}`, {}).then(response => response.data)
 
     },
+}
+export const loginApi = {
+
+    login: ({email, password, isRemember, captcha}) => {
+
+        return (
+            instance.post('/auth/login', {
+                email,
+                password,
+                isRemember,
+                captcha
+            }).then(responce => responce.data)
+        )
+    }
 }
 

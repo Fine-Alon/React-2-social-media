@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.module.css';
-import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Music from "./components/Music/Music";
 import {Route, Routes} from "react-router-dom";
@@ -11,7 +10,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import FriendContainer from "./components/Friend/FriendContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import LoginContainer from "./components/Login/LoginContainer";
 
 const App = (props) => {
     return (
@@ -26,11 +25,10 @@ const App = (props) => {
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/friends'} element={<FriendContainer/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>
-                    <Route path={'/login'} element={<Login/>}/>
+                    <Route path={'/login'} element={<LoginContainer/>}/>
                 </Routes>
             </div>
         </div>
     );
 }
-
 export default App;

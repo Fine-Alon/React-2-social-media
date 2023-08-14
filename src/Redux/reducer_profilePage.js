@@ -1,8 +1,6 @@
 import {profileAPI} from "../api/api";
-import login from "../components/Login/Login";
 
-const ADD_POST_TO_STATE = 'ADD_POST_TO_STATE'
-const TEXT_UPDATING = 'TEXT_UPDATING'
+const ADD_NEW_POST = 'ADD_NEW_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
@@ -13,7 +11,6 @@ let initialState = {
         {id: '2', countOfLikes: 43, message: 'This is my first post'},
         {id: '3', countOfLikes: 25, message: 'so how are u today'},
     ],
-    messageToPost: 'AlonMMA',
     userProfile: null,
     userStatus: 'initial status from reducer',
 }
@@ -21,17 +18,11 @@ let initialState = {
 const reducerProfilePage = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST_TO_STATE:
-            let newPost = {id: '4', countOfLikes: 0, message: state.messageToPost}
+        case ADD_NEW_POST:
+            let newPost = {id: '4', countOfLikes: 0, message: action.newPostText}
             return {
                 ...state,
                 postInfo: [...state.postInfo, newPost],
-                messageToPost: '',
-            }
-        case TEXT_UPDATING:
-            return {
-                ...state,
-                messageToPost: action.value
             }
         case SET_USER_PROFILE:
             return {
@@ -48,8 +39,7 @@ const reducerProfilePage = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST_TO_STATE})
-export const textUpdatingActionCreator = (text) => ({type: TEXT_UPDATING, value: text})
+export const addNewPostAC = (newPostText) => ({type: ADD_NEW_POST,newPostText})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
 export const setUserStatus = (statusText) => ({type: SET_USER_STATUS, statusText})
 
