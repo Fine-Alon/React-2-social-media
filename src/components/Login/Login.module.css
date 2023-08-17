@@ -1,0 +1,13 @@
+.inputError{
+    outline: 2px solid #c20606;
+    outline-offset: -1px;
+    border: 1px solid #c20606;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+.inputError + span{
+    padding-left: 4px;
+    color: #c20606;
+    font-weight: bold;
+}
