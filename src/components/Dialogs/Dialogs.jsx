@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Dialogs.module.css"
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import {Field, reduxForm} from "redux-form";
+import {useForm} from "react-hook-form";
 
 // const isActiveDialog = ({isActive}) => isActive ? style.active : style.dialog
 
@@ -10,43 +10,55 @@ const Dialogs = (props) => {
     let dialogsElements = props.dialogs.map((d) => (<Dialog key={d.id} name={d.name} id={d.id}/>))
     let messagesElements = props.messages.map((m) => (<Message key={m.id} name={m.name}/>))
 
-    const onSubmit = (value)=>{
-        console.log(value)
-        props.addNewMessage(value.newMessageBody)
+    const {
+        register,
+        handleSubmit,
+        formState: {errors},
+        watch
+    } = useForm()
+
+    const onSubmit = (data) => {
+        console.log(data)
+        data.dialogsNewMessageBody ? props.addNewMessage(data.dialogsNewMessageBody) : alert('before I help u send message, write the message :)')
     }
 
     return (
         <div className={style.dialogs}>
             <div className={style.dialogs_item}>
                 {dialogsElements}
+
             </div>
             <div className={style.messages}>
                 {messagesElements}
 
-                <AddMessageForm onSubmit={onSubmit}/>
+                <form className={style.flex_colomn} onSubmit={handleSubmit(onSubmit)}>
+
+            <textarea placeholder={'enter your message...'}
+                      {...register('dialogsNewMessageBody', {
+                          maxLength: {
+                              value: 100,
+                              message: 'Too much symbols, keep less then 100 symbols'
+                          }
+                      })}
+                      aria-invalid={errors.login ? 'true' : 'false'}/>
+                    {errors.dialogsNewMessageBody && <span>{errors.dialogsNewMessageBody.message}</span>}
+
+                    <input type="submit"/>
+                </form>
 
             </div>
         </div>
     )
 }
 
-let AddMessageForm = (props)=>{
+// let AddMessageForm = (props) => {
+//
+//
+//
+//     return (
+//
+//     )
+// }
 
-    const {handleSubmit} = props
-
-    return (
-        <form className={style.flex_colomn} onSubmit={handleSubmit}>
-
-            <Field name="newMessageBody" component="textarea" placeholder={'enter your message..'} />
-
-            <button type="submit">add message</button>
-        </form>
-    )
-}
-
-AddMessageForm = reduxForm({
-    // a unique name for the form
-    form: 'dialogAddMessageForm'
-})(AddMessageForm)
 
 export default Dialogs
