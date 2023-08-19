@@ -3,6 +3,7 @@ import style from "./Login.module.css";
 import {useForm} from "react-hook-form";
 import {connect} from "react-redux";
 import {loginUser} from "../../Redux/reducer_auth";
+import {Navigate } from "react-router-dom";
 
 const Login = (props) => {
     const {
@@ -22,6 +23,10 @@ const Login = (props) => {
     }
     // console.log(watch()) // watch input value by passing the name of it
 
+    if (props.isAuth) {
+        return <Navigate to="/profile" />
+    }
+
     return (
         <div>
             <h1>login</h1>
@@ -31,9 +36,9 @@ const Login = (props) => {
                     <input type="email" placeholder="email" className={errors.email ? style.inputError : ''}
                            {...register("email", {
                                required: 'Email Address is required'
-                            /*   onChange: (e) => {
-                                   console.log(e)
-                               },*/
+                               /*   onChange: (e) => {
+                                      console.log(e)
+                                  },*/
                            })}
                            aria-invalid={errors.email ? 'true' : 'false'}
                     />
@@ -63,5 +68,8 @@ const Login = (props) => {
         </div>
     )
 }
-connect(null, {loginUser})(Login)
-export default Login
+const mapStateToProps = (state) => ({
+  isAuth: state.userAuth.isAuth,
+})
+
+export default connect(mapStateToProps, {loginUser})(Login)

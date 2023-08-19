@@ -17,3 +17,18 @@
     color: white;
     padding: 5px;
 }
+
+.logout{
+    cursor: pointer;
+    margin-right: 5px;
+    border: #d1d9ff;
+    border-radius: 4px;
+    background: #d1d9ff;
+    color: #79172BED;
+    font-weight: bold;
+    transition: transform .2s ease-in-out;
+}
+
+.logout:hover{
+    transform: scale(1.1);
+}
