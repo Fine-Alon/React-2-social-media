@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="609af418-1909-4206-a9d8-97296fcf9979" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HOC/AuthRedirect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HOC/AuthRedirect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/reducer_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
@@ -149,7 +149,8 @@
       <workItem from="1692213991960" duration="17226000" />
       <workItem from="1692295711545" duration="8998000" />
       <workItem from="1692386805960" duration="22615000" />
-      <workItem from="1692476259327" duration="6342000" />
+      <workItem from="1692476259327" duration="15544000" />
+      <workItem from="1692559221592" duration="7318000" />
     </task>
     <servers />
   </component>

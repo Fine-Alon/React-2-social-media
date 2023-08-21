@@ -2,8 +2,9 @@ import React from "react" ;
 import style from "./Login.module.css";
 import {useForm} from "react-hook-form";
 import {connect} from "react-redux";
-import {loginUser} from "../../Redux/reducer_auth";
-import {Navigate } from "react-router-dom";
+import {loginUser, setServerError} from "../../Redux/reducer_auth";
+import {Navigate} from "react-router-dom";
+import {authAPI} from "../../api/api";
 
 const Login = (props) => {
     const {
@@ -11,20 +12,39 @@ const Login = (props) => {
         handleSubmit,
         watch,
         formState: {errors},
+        clearErrors,
+        setError,
+        reset
     } = useForm({
         defaultValues: {
             rememberMe: true,
-        }
+        },
+        criteriaMode: 'all',
     })
     const onSubmit = (data) => {
         console.log(data)
         const {email, password, rememberMe} = data
         props.loginUser(email, password, rememberMe)
+
+        reset({
+            email: '',
+            password: '',
+            rememberMe: false
+        })
+        // if(props.serverErrorMessage){
+        //     setError('server', {
+        //         type: 'serverError',
+        //         message: props.serverErrorMessage
+        //     })
+        // }
+
     }
+
+
     // console.log(watch()) // watch input value by passing the name of it
 
     if (props.isAuth) {
-        return <Navigate to="/profile" />
+        return <Navigate to="/profile"/>
     }
 
     return (
@@ -40,6 +60,10 @@ const Login = (props) => {
                                       console.log(e)
                                   },*/
                            })}
+                           onFocus={() => {
+                               props.setServerError('')
+                               clearErrors(["email", "server"])
+                           }}
                            aria-invalid={errors.email ? 'true' : 'false'}
                     />
                     {errors.email?.type === "required" && <span role='alert'>{errors.email.message}</span>}
@@ -51,6 +75,10 @@ const Login = (props) => {
                     <input placeholder="password" type='password' className={errors.password ? style.inputError : ''}
                            {...register("password", {required: true, minLength: 4, maxLength: 30})}
                            aria-invalid={errors.password ? 'true' : 'false'}
+                           onFocus={() => {
+                               props.setServerError('')
+                               clearErrors(["password", "server"])
+                           }}
                     />
 
                     {/* errors will return when field validation fails  */}
@@ -62,14 +90,17 @@ const Login = (props) => {
                     <input type="checkbox"{...register('rememberMe')}/>
                     <span>remember me</span>
                 </div>
-
                 <input type="submit" value='Login'/>
             </form>
+            <div className={style.error}>
+                {props.serverErrorMessage}
+            </div>
         </div>
     )
 }
 const mapStateToProps = (state) => ({
-  isAuth: state.userAuth.isAuth,
+    isAuth: state.userAuth.isAuth,
+    serverErrorMessage: state.userAuth.serverErrorMessage,
 })
 
-export default connect(mapStateToProps, {loginUser})(Login)
+export default connect(mapStateToProps, {loginUser, setServerError})(Login)
