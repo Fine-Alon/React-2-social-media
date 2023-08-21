@@ -46,12 +46,15 @@ export const getAuthUserData = () => {
         })
     }
 }
-export const loginUser = (email, password, rememberMe) => (dispatch, getState) => {
+export const loginUser = (email, password, rememberMe,setError) => (dispatch, getState) => {
     authAPI.login(email, password, rememberMe).then(response => {
         if (response.resultCode === 0) {
             dispatch(getAuthUserData())
         } else  {
-            dispatch(setServerError(response.messages[0]))
+            setError("server", {
+                type: "custom",
+                message: response.messages
+            });
         }
     })
 }

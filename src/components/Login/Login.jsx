@@ -11,11 +11,12 @@ const Login = (props) => {
         register,
         handleSubmit,
         watch,
-        formState: {errors},
+        formState: {errors, isValid},
         clearErrors,
         setError,
         reset
     } = useForm({
+        mode: "onBlur",
         defaultValues: {
             rememberMe: true,
         },
@@ -24,23 +25,14 @@ const Login = (props) => {
     const onSubmit = (data) => {
         console.log(data)
         const {email, password, rememberMe} = data
-        props.loginUser(email, password, rememberMe)
+        props.loginUser(email, password, rememberMe,setError)
 
         reset({
             email: '',
             password: '',
             rememberMe: false
-        })
-        // if(props.serverErrorMessage){
-        //     setError('server', {
-        //         type: 'serverError',
-        //         message: props.serverErrorMessage
-        //     })
-        // }
-
+        }, { keepErrors: true })
     }
-
-
     // console.log(watch()) // watch input value by passing the name of it
 
     if (props.isAuth) {
@@ -90,11 +82,11 @@ const Login = (props) => {
                     <input type="checkbox"{...register('rememberMe')}/>
                     <span>remember me</span>
                 </div>
+                {errors.server && <div ><span className={style.error}>{errors.server.message}</span>
+                    </div>
+                }
                 <input type="submit" value='Login'/>
             </form>
-            <div className={style.error}>
-                {props.serverErrorMessage}
-            </div>
         </div>
     )
 }
