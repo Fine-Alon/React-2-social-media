@@ -2,7 +2,7 @@ import React from "react" ;
 import style from "./Login.module.css";
 import {useForm} from "react-hook-form";
 import {connect} from "react-redux";
-import {loginUser, setServerError} from "../../Redux/reducer_auth";
+import {loginUser} from "../../Redux/reducer_auth";
 import {Navigate} from "react-router-dom";
 import {authAPI} from "../../api/api";
 
@@ -25,13 +25,13 @@ const Login = (props) => {
     const onSubmit = (data) => {
         console.log(data)
         const {email, password, rememberMe} = data
-        props.loginUser(email, password, rememberMe,setError)
+        props.loginUser(email, password, rememberMe, setError)
 
         reset({
             email: '',
             password: '',
             rememberMe: false
-        }, { keepErrors: true })
+        }, {keepErrors: true})
     }
     // console.log(watch()) // watch input value by passing the name of it
 
@@ -52,10 +52,8 @@ const Login = (props) => {
                                       console.log(e)
                                   },*/
                            })}
-                           onFocus={() => {
-                               props.setServerError('')
-                               clearErrors(["email", "server"])
-                           }}
+                           onFocus={() => clearErrors(["email", "server"])
+                           }
                            aria-invalid={errors.email ? 'true' : 'false'}
                     />
                     {errors.email?.type === "required" && <span role='alert'>{errors.email.message}</span>}
@@ -67,10 +65,7 @@ const Login = (props) => {
                     <input placeholder="password" type='password' className={errors.password ? style.inputError : ''}
                            {...register("password", {required: true, minLength: 4, maxLength: 30})}
                            aria-invalid={errors.password ? 'true' : 'false'}
-                           onFocus={() => {
-                               props.setServerError('')
-                               clearErrors(["password", "server"])
-                           }}
+                           onFocus={() => clearErrors(["password", "server"])}
                     />
 
                     {/* errors will return when field validation fails  */}
@@ -82,8 +77,8 @@ const Login = (props) => {
                     <input type="checkbox"{...register('rememberMe')}/>
                     <span>remember me</span>
                 </div>
-                {errors.server && <div ><span className={style.error}>{errors.server.message}</span>
-                    </div>
+                {errors.server && <div><span className={style.error}>{errors.server.message}</span>
+                </div>
                 }
                 <input type="submit" value='Login'/>
             </form>
@@ -95,4 +90,4 @@ const mapStateToProps = (state) => ({
     serverErrorMessage: state.userAuth.serverErrorMessage,
 })
 
-export default connect(mapStateToProps, {loginUser, setServerError})(Login)
+export default connect(mapStateToProps, {loginUser})(Login)
