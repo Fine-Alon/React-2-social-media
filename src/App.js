@@ -2,7 +2,7 @@ import React from 'react'
 import './App.module.css';
 import NavBar from './components/NavBar/NavBar';
 import Music from "./components/Music/Music";
-import {redirect, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import style from './App.module.css'
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -13,18 +13,20 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
-import {compose} from "redux";
-import {withAuthRedirect} from "./HOC/AuthRedirect";
+import {initializeApp} from "./Redux/reducer_app";
 
 class App extends React.Component<{}> {
 
     componentDidMount() {
-        if (!this.props.isInitialized) {
-            <Preloader/>
-        }
+        this.props.initializeApp()
+
     }
 
     render() {
+        if (!this.props.isInitialized) {
+            return <Preloader width={{width: "100%"}}/>
+        }
+
         return (
             <div className={style.app_wrapper}>
                 <HeaderContainer/>
@@ -48,6 +50,5 @@ class App extends React.Component<{}> {
 const mapStateToProps = (state) => ({
     isInitialized: state.app.isInitialized
 })
-compose(withAuthRedirect,connect(mapStateToProps, null))(App)
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, {initializeApp})(App);

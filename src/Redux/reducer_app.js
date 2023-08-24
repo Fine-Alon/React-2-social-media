@@ -1,3 +1,5 @@
+import {getAuthUserData} from "./reducer_auth";
+
 const SET_INITIALIZED = 'SET_INITIALIZED'
 
 let initialState = {
@@ -15,5 +17,14 @@ const reducerUserApp = (state = initialState, action) => {
     }
 }
 
-export const setUserAuthData = () => ({type: SET_INITIALIZED})
+export const initializedSuccess = () => ({type: SET_INITIALIZED})
+
+export const initializeApp = () => (dispatch) => {
+    let promise = dispatch(getAuthUserData())
+    Promise.all([promise]).then(() => {
+            dispatch(initializedSuccess())
+        }
+    )
+}
+
 export default reducerUserApp;
