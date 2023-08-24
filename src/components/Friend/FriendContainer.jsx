@@ -5,6 +5,13 @@ import {
 } from "../../Redux/reducer_friendPage";
 import Friends from "./Friends";
 import {compose} from "redux";
+import {
+    getCountPerPage,
+    getCurrentPage,
+    getFollowingProgress,
+    getIsFetching,
+    getTotalUsersCount, getUsersSuperSelector,
+} from "../../Redux/selectors_friendPage";
 
 class FriendsContainer extends React.Component {
 
@@ -36,12 +43,12 @@ class FriendsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.friendsPage.users,
-        countPerPage: state.friendsPage.countPerPage,
-        totalUsersCount: state.friendsPage.totalUsersCount,
-        currentPage: state.friendsPage.currentPage,
-        isFetching: state.friendsPage.isFetching,
-        followingProgress: state.friendsPage.followingProgress,
+        users: getUsersSuperSelector(state),
+        countPerPage: getCountPerPage(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingProgress: getFollowingProgress(state),
     }
 }
 
@@ -62,7 +69,7 @@ let mapDispatchToProps = (dispatch) => {
         deleteFollower: (userId) => {
             dispatch(deleteFollower(userId))
         }
-        ,subscribeFollower: (userId) => {
+        , subscribeFollower: (userId) => {
             dispatch(subscribeFollower(userId))
         },
     }

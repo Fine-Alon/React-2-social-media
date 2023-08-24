@@ -13,7 +13,7 @@ let initialState = {
     users: [],
     countPerPage: 5,
     totalUsersCount: 0,
-    currentPage: 25,
+    currentPage: 1,
     isFetching: true,
     followingProgress: [],
 }
@@ -84,12 +84,11 @@ export let ACToggleFollowingProgress = (isFetch, userId) => ({type: TOGGLE_IS_FO
 export let ACShowMoreBtn = () => ({type: SHOW_MORE_BTN})
 
 export const getUsers = (countPerPage, currentPage) => {
-
     return (dispatch, getState) => {
-
         dispatch(ACIsFetching(true))
         usersAPI.getUsers(countPerPage, currentPage)
             .then(response => {
+                dispatch(ACSetCurrentPage(currentPage))
                 dispatch(ACSetUser(response.items))
                 dispatch(ACIsFetching(false))
                 dispatch(ACSetTotalUsersCount(response.totalCount))
