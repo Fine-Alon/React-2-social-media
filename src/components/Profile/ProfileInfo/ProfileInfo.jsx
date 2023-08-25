@@ -3,7 +3,7 @@ import style from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import sadSmile from "../../../assets/img/sadSmile.png";
 import luckySmile from "../../../assets/img/luckySmile.png";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusHooks from "./ProfileStatusHooks";
 
 const ProfileInfo = (props) => {
     if (!props.userProfile) {
@@ -23,7 +23,7 @@ const ProfileInfo = (props) => {
                            src="https://cdn.dribbble.com/userupload/9066333/file/original-b77ad6740798ed3ddb5f01e51c821124.png?resize=840x630&vertical=center"
                            alt="profile pic"/>
                 }
-                <ProfileStatus updateStatus={props.updateStatus} userStatus={props.userStatus}/>
+                <ProfileStatusHooks updateStatus={props.updateStatus} userStatus={props.userStatus}/>
             </div>
 
 
