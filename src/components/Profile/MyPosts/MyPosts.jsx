@@ -1,11 +1,9 @@
-import React from 'react'
+import React, {memo} from 'react'
 import style from './MyPosts.module.css'
 import Post from './Post/Post';
-import {Field, reduxForm} from "redux-form";
 import {useForm} from "react-hook-form";
-import login from "../../Login/Login";
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
     let postInfoComps = props.postInfo.map((p) => (<Post key={p.id} likesCount={p.countOfLikes} message={p.message}/>))
     // let newPostElement = React.createRef()
@@ -18,6 +16,8 @@ const MyPosts = (props) => {
     const onSubmit = data => {
         data.newPostText ? props.addNewPost(data.newPostText) : alert('But field is empty...')
     }
+
+    console.log("RENDER MyPosts")
 
     return (
         <div className={style.post_area}>
@@ -42,5 +42,5 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+})
 export default MyPosts;
