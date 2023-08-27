@@ -1,6 +1,7 @@
 import {profileAPI} from "../api/api";
 
 const ADD_NEW_POST = 'ADD_NEW_POST'
+const DELETE_NEW_POST = 'DELETE_NEW_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 
@@ -34,12 +35,18 @@ const reducerProfilePage = (state = initialState, action) => {
                 ...state,
                 userStatus: action.statusText
             }
+        case DELETE_NEW_POST:
+            return {
+                ...state,
+                postInfo: state.postInfo.filter(p => p.id !== action.id)
+            }
         default:
             return state;
     }
 }
 
-export const addNewPostAC = (newPostText) => ({type: ADD_NEW_POST,newPostText})
+export const addNewPostAC = (newPostText) => ({type: ADD_NEW_POST, newPostText})
+export const deletePostAC = (id) => ({type: DELETE_NEW_POST, id})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
 export const setUserStatus = (statusText) => ({type: SET_USER_STATUS, statusText})
 
