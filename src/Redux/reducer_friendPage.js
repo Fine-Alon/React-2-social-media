@@ -65,7 +65,7 @@ const reducerFriendsPage = (state = initialState, action) => {
                 ...state,
                 followingProgress: action.isFetch
                     ? [...state.followingProgress, action.userId]
-                    : state.followingProgress.filter(id => id != action.userId)
+                    : state.followingProgress.filter(id => id !== action.userId)
             }
         case SHOW_MORE_BTN :
             return state;
