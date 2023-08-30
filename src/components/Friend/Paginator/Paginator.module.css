@@ -1,0 +1,13 @@
+
+.currentPage {
+    font-weight: bolder;
+}
+
+.pages {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.pages span{
+    cursor: pointer;
+}

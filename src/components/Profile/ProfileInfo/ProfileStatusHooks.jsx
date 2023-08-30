@@ -15,15 +15,6 @@ const ProfileStatusHooks = (props) => {
     const onStatusChange = (e) => {
         setStatusText(e.currentTarget.value)
     }
-
-    // componentDidUpdate(prevProps, prevState, snapshot)
-    // {
-    //     if (this.props.userStatus !== prevProps.userStatus) {
-    //         this.setState({
-    //             statusText: this.props.userStatus,
-    //         })
-    //     }
-    // }
     return (
         <div>
             {editMode &&

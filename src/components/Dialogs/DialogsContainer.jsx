@@ -1,12 +1,8 @@
-import React from "react";
 import {addNewMessageAC} from "../../Redux/reducer_dialogPage";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import {withAuthRedirect} from "../../HOC/AuthRedirect";
 import {compose} from "redux";
-
-// const isActiveDialog = ({isActive}) => isActive ? style.active : style.dialog
 
 let mapStateToProps = (state) => {
     return {
