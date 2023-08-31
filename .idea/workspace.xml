@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="609af418-1909-4206-a9d8-97296fcf9979" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialog/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialog/Dialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_dialogPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_dialogPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_friendPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/reducer_profilePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer_profilePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Dialogs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/DialogsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dialogs/Message/Message.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dialogs/Message/Message.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Friend/Friend.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Friend/Friend.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Friend/Friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Friend/Friends.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileStatusHooks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileStatusHooks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Friend/Paginator/Paginator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Paginator.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Friend/Paginator/Paginator.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Paginator.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/MyPosts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInfo/ProfileInfo.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +59,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "js.last.introduce.type": "CONST",
-    "last_opened_file_path": "C:/Users/Андрей/Desktop/React-2-social-media/src/components/Friend/Paginator",
+    "last_opened_file_path": "C:/Users/Андрей/Desktop/React-2-social-media/src/components/Friend",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -66,21 +74,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friend" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friend\Paginator" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\Redux" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Profile\ProfileInfo" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Login" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\common" />
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Paginator" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\node_modules\.bin" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\draw_layout_of_proj\step_1_MyOwnRedux" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friends" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Music" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Jest.should followingProgress array be incremented">
     <configuration name="should followingProgress array be incremented" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -201,7 +209,8 @@
       <workItem from="1692904689521" duration="5277000" />
       <workItem from="1692978500042" duration="4172000" />
       <workItem from="1693078449364" duration="16016000" />
-      <workItem from="1693337113362" duration="8325000" />
+      <workItem from="1693337113362" duration="8531000" />
+      <workItem from="1693423609496" duration="12345000" />
     </task>
     <servers />
   </component>

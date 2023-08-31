@@ -3,9 +3,8 @@ import style from './MyPosts.module.css'
 import Post from './Post/Post';
 import {useForm} from "react-hook-form";
 
-const MyPosts = React.memo(( {postInfo,addNewPost}) => {
+const MyPosts = React.memo(({postInfo, addNewPost}) => {
     let postInfoComps = [...postInfo].map((p) => (<Post key={p.id} likesCount={p.countOfLikes} message={p.message}/>))
-    // let newPostElement = React.createRef()
     const {
         handleSubmit,
         register,

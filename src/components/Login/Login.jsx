@@ -4,7 +4,6 @@ import {useForm} from "react-hook-form";
 import {connect} from "react-redux";
 import {loginUser} from "../../Redux/reducer_auth";
 import {Navigate} from "react-router-dom";
-import {authAPI} from "../../api/api";
 
 const Login = (props) => {
     const {
@@ -23,7 +22,6 @@ const Login = (props) => {
         criteriaMode: 'all',
     })
     const onSubmit = (data) => {
-        console.log(data)
         const {email, password, rememberMe} = data
         props.loginUser(email, password, rememberMe, setError)
 

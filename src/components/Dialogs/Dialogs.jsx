@@ -14,12 +14,13 @@ const Dialogs = ({dialogs, messages, addNewMessage}) => {
         register,
         handleSubmit,
         formState: {errors},
-        watch
+        watch,
+        reset,
     } = useForm()
 
     const onSubmit = (data) => {
         data.dialogsNewMessageBody ? addNewMessage(data.dialogsNewMessageBody) : alert('before I help u send message, write the message :)')
-
+        reset({dialogsNewMessageBody: ''})
     }
     return (
         <div className={style.dialogs}>

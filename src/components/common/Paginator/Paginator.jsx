@@ -1,16 +1,13 @@
 import React from "react";
-import styles from "./Friend.module.css"
+import styles from "./Paginator.module.css"
 
 const Paginator = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
     let pagesButtons = []
 
-    for (let i = 32; i <= 45; i++) {
+    for (let i = 52; i <= 65; i++) {
         pagesButtons.push(i)
     }
-
-    //  <Paginator totalUsersCount={totalUsersCount} countPerPage={countPerPage}
-    //                        onPageChanged={onPageChanged} currentPage={currentPage}/>
 
     return (
         <div className={styles.pages}>
@@ -24,5 +21,4 @@ const Paginator = (props) => {
             })}
         </div>)
 }
-
 export default Paginator;

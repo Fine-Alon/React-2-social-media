@@ -1,5 +1,3 @@
-const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
-const UPDATE_MESSAGE_TEXT = 'UPDATE_MESSAGE_TEXT'
 const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
 
 const initialState = {
@@ -29,5 +27,7 @@ const reducerDialogPage = (state = initialState, action) => {
             return state;
     }
 }
-export const addNewMessageAC = (newMessageBody) => ({type: ADD_NEW_MESSAGE, newMessageBody})
+export const addNewMessageAC = (newMessageBody) => ({type: ADD_NEW_MESSAGE,
+    newMessageBody})
+
 export default reducerDialogPage;

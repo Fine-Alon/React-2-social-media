@@ -1,68 +1,23 @@
 import React from "react";
 import styles from "./Friend.module.css"
-import userPhoto from "../../assets/img/users_ava.png"
 import Preloader from "../common/Preloader/Preloader";
-import {NavLink} from "react-router-dom";
+import Paginator from "../common/Paginator/Paginator";
+import Friend from "./Friend";
 
 const Friends = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
-    let pagesButtons = []
-
-    for (let i = 22; i <= 35; i++) {
-        pagesButtons.push(i)
-    }
-
     return (<div className={styles.users_section}>
         <h3>Users</h3>
 
         <ul>
-            <div className={styles.pages}>
-                {pagesButtons.map(p => {
-                    return <span onClick={() => {
-                        props.onPageChanged(p)
-                    }} className={props.currentPage === p
-                        ? styles.currentPage
-                        : ''}>{p},
-                    </span>
-                })}
-            </div>
+            <Paginator totalUsersCount={props.totalUsersCount} countPerPage={props.countPerPage}
+                       onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
+
             {props.isFetching ? <Preloader width={{width: "120px"}}/> : null}
+
             {
-                props.users.map(u =>
-                    <li className={styles.friend} key={u.id}>
-                        <div className={styles.friend_left_side}>
-                            <NavLink to={'/profile/' + u.id}>
-                                <img className={styles.ava}
-                                     src={u.photos.small ? u.photos.small : userPhoto}
-                                     alt="friends"/>
-                            </NavLink>
-                            {u.followed
-
-                                ? <button disabled={props.followingProgress.includes(u.id)}
-                                          onClick={() => {
-                                              props.deleteFollower(u.id)
-                                          }}>
-                                    Unfollow</button>
-
-                                : <button disabled={props.followingProgress.includes(u.id)}
-                                          onClick={() => {
-                                              props.subscribeFollower(u.id)
-                                          }}>
-                                    Follow</button>}
-
-                        </div>
-                        <div className={styles.friend_right_side}>
-                            <div className={styles.friend_right_side_top}>
-                                <span>{u.name}</span>
-                                <p>{u.status}</p>
-                            </div>
-                            <div className={styles.friend_right_side_bottom}>
-                                <span>{"u.location.country"}</span>
-                                <span>{"u.location.city"}</span>
-                            </div>
-                        </div>
-                    </li>
-                )
+                props.users.map(u => <Friend user={u} followingProgress={props.followingProgress}
+                                             subscribeFollower={props.subscribeFollower}
+                                             deleteFollower={props.deleteFollower}/>)
             }
         </ul>
     </div>)

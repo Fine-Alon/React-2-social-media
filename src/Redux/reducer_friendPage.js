@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {updateObjInArr} from "../utils/object-helpers";
 
 const FOLLOW_USER = 'FOLLOW_USER'
 const UNFOLLOW_USER = 'UNFOLLOW_USER'
@@ -13,7 +14,7 @@ let initialState = {
     users: [],
     countPerPage: 5,
     totalUsersCount: 0,
-    currentPage: 1,
+    currentPage: 53,
     isFetching: true,
     followingProgress: [],
 }
@@ -23,22 +24,12 @@ const reducerFriendsPage = (state = initialState, action) => {
         case FOLLOW_USER:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
-                    }
-                    return u;
-                })
+                users: updateObjInArr(state.users, 'id', action.userId, {followed: true})
             };
         case UNFOLLOW_USER:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false}
-                    }
-                    return u
-                })
+                users: updateObjInArr(state.users, 'id', action.userId, {followed: false})
             };
         case SET_USERS:
             return {
@@ -84,36 +75,31 @@ export let ACToggleFollowingProgress = (isFetch, userId) => ({type: TOGGLE_IS_FO
 export let ACShowMoreBtn = () => ({type: SHOW_MORE_BTN})
 
 export const getUsers = (countPerPage, currentPage) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(ACIsFetching(true))
-        usersAPI.getUsers(countPerPage, currentPage)
-            .then(response => {
-                dispatch(ACSetCurrentPage(currentPage))
-                dispatch(ACSetUser(response.items))
-                dispatch(ACIsFetching(false))
-                dispatch(ACSetTotalUsersCount(response.totalCount))
-            })
+        const response = await usersAPI.getUsers(countPerPage, currentPage)
+        dispatch(ACSetCurrentPage(currentPage))
+        dispatch(ACSetUser(response.items))
+        dispatch(ACIsFetching(false))
+        dispatch(ACSetTotalUsersCount(response.totalCount))
     }
+}
+
+const followUnfollowFlow = async (dispatch, userId, APIisSubscribeMethod, ACisConfirmMethod) => {
+    dispatch(ACToggleFollowingProgress(true, userId))
+    const response = await APIisSubscribeMethod(userId)
+    if (response.resultCode === 0) dispatch(ACisConfirmMethod(userId))
+    dispatch(ACToggleFollowingProgress(false, userId))
 }
 
 export const deleteFollower = (userId) => {
-
     return (dispatch, getState) => {
-        dispatch(ACToggleFollowingProgress(true, userId))
-        usersAPI.unsubscribeUser(userId).then(response => {
-            if (response.resultCode == 0) dispatch(unfollowConfirm(userId))
-            dispatch(ACToggleFollowingProgress(false, userId))
-        })
+        followUnfollowFlow(dispatch, userId, usersAPI.unsubscribeUser.bind(usersAPI), unfollowConfirm)
     }
 }
 export const subscribeFollower = (userId) => {
-
     return (dispatch, getState) => {
-        dispatch(ACToggleFollowingProgress(true, userId))
-        usersAPI.subscribeUser(userId).then(response => {
-            if (response.resultCode == 0) dispatch(followConfirm(userId))
-            dispatch(ACToggleFollowingProgress(false, userId))
-        })
+        followUnfollowFlow(dispatch, userId, usersAPI.subscribeUser.bind(usersAPI), followConfirm)
     }
 }
 
