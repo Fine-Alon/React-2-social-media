@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Friend.module.css"
+import styles from "./Friends.module.css"
 import Preloader from "../common/Preloader/Preloader";
 import Paginator from "../common/Paginator/Paginator";
 import Friend from "./Friend";
@@ -12,12 +12,12 @@ const Friends = (props) => {
             <Paginator totalUsersCount={props.totalUsersCount} countPerPage={props.countPerPage}
                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
 
-            {props.isFetching ? <Preloader width={{width: "120px"}}/> : null}
+            {props.isFetching
+                ? <Preloader width={{width: "120px"}}/>
 
-            {
-                props.users.map(u => <Friend user={u} followingProgress={props.followingProgress}
-                                             subscribeFollower={props.subscribeFollower}
-                                             deleteFollower={props.deleteFollower}/>)
+                : props.users.map(u => <Friend user={u} followingProgress={props.followingProgress}
+                                               subscribeFollower={props.subscribeFollower}
+                                               deleteFollower={props.deleteFollower}/>)
             }
         </ul>
     </div>)

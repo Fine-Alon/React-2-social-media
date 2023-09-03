@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Friend.module.css"
+import styles from "./Friends.module.css"
 import userPhoto from "../../assets/img/users_ava.png"
 import {NavLink} from "react-router-dom";
 const Friend = ({followingProgress, subscribeFollower, deleteFollower, user,}) => {
