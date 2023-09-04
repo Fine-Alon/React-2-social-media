@@ -9,7 +9,8 @@ const Friends = (props) => {
         <h3>Users</h3>
 
         <ul>
-            <Paginator totalUsersCount={props.totalUsersCount} countPerPage={props.countPerPage}
+            <Paginator totalUsersCount={props.totalUsersCount}
+                       portionSize={45} countPerPage={props.countPerPage}
                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
 
             {props.isFetching
