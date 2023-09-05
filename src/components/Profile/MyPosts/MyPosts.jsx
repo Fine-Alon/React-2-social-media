@@ -8,11 +8,13 @@ const MyPosts = React.memo(({postInfo, addNewPost}) => {
     const {
         handleSubmit,
         register,
+        reset,
         formState: {errors},
     } = useForm()
 
     const onSubmit = data => {
         data.newPostText ? addNewPost(data.newPostText) : alert('But field is empty...')
+        reset({newPostText: ''})
     }
 
     return (
