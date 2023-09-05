@@ -10,13 +10,13 @@ const Friends = (props) => {
 
         <ul>
             <Paginator totalUsersCount={props.totalUsersCount}
-                       portionSize={45} countPerPage={props.countPerPage}
+                       portionSize={15} countPerPage={props.countPerPage}
                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
 
             {props.isFetching
                 ? <Preloader width={{width: "120px"}}/>
 
-                : props.users.map(u => <Friend user={u} followingProgress={props.followingProgress}
+                : props.users.map(u =>  <Friend user={u} followingProgress={props.followingProgress}
                                                subscribeFollower={props.subscribeFollower}
                                                deleteFollower={props.deleteFollower}/>)
             }

@@ -2,26 +2,10 @@ import React from 'react'
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getProfileInfo, getProfileStatus, setUserProfile, updateProfileStatus} from "../../Redux/reducer_profilePage";
-import {useLocation, useNavigate, useParams,} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../HOC/AuthRedirect";
 import {initializeApp} from "../../Redux/reducer_app";
-
-const withRouter = (Component) => {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-            <Component
-                {...props}
-                router={{location, navigate, params}}
-            />
-        );
-    }
-
-    return ComponentWithRouterProp;
-}
+import withRouter from "../../HOC/WithRouter";
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
