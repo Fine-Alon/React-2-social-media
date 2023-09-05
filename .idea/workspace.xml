@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="609af418-1909-4206-a9d8-97296fcf9979" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Friends/Friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Friends/Friends.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Paginator/Paginator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Paginator.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Paginator/Paginator.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Paginator/Paginator.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +51,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "78ef2d27",
+    "git-widget-placeholder": "206135fc",
     "js.last.introduce.type": "CONST",
-    "last_opened_file_path": "C:/Users/Андрей/Desktop/React-2-social-media/src/components/Friend/Paginator",
+    "last_opened_file_path": "C:/Users/Андрей/Desktop/React-2-social-media/src/HOC",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,11 +68,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\HOC" />
+      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\common\Paginator" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Friend\Paginator" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\Redux" />
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Profile\ProfileInfo" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components" />
-      <recent name="C:\Users\Андрей\Desktop\React-2-social-media\src\components\Login" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Андрей\Desktop\React-2-social-media\node_modules\.bin" />
@@ -205,7 +205,8 @@
       <workItem from="1693078449364" duration="16016000" />
       <workItem from="1693337113362" duration="8325000" />
       <workItem from="1693702542482" duration="325000" />
-      <workItem from="1693781684295" duration="7133000" />
+      <workItem from="1693781684295" duration="8822000" />
+      <workItem from="1693855623601" duration="10688000" />
     </task>
     <servers />
   </component>
@@ -213,6 +214,21 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -225,6 +241,13 @@
                       <list>
                         <option value="1691364441421" />
                         <option value="" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
                       </list>
                     </value>
                   </entry>
