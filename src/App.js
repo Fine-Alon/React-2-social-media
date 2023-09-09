@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from 'react'
+import React, {lazy} from 'react'
 import './App.module.css';
 import NavBar from './components/NavBar/NavBar';
 import Music from "./components/Music/Music";
@@ -22,7 +22,6 @@ const ProfileContainerWithSuspense = WithSuspenseLazy(ProfileContainer)
 const FriendContainerWithSuspense = WithSuspenseLazy(FriendContainer)
 
 class App extends React.Component<{}> {
-
     componentDidMount() {
         this.props.initializeApp()
 
