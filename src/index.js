@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom/client";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter as Router} from "react-router-dom";
 import App from "./App";
 import store from "./Redux/redux_store";
 import {Provider} from "react-redux";
@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 export let renderEntireThree = (state) => {
     root.render(
         <React.StrictMode>
-            <BrowserRouter>
+            <Router>
                 <Provider store={store}>
-                    <App />
+                    <App/>
                 </Provider>
-            </BrowserRouter>
+            </Router>
         </React.StrictMode>
     );
 }
