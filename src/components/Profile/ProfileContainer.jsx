@@ -9,12 +9,13 @@ import {
     updateProfileStatus
 } from "../../Redux/reducer_profilePage";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../HOC/AuthRedirect";
+import {withAuthRedirect} from "../../HOC/WithAuthRedirect";
 import {initializeApp} from "../../Redux/reducer_app";
 import withRouter from "../../HOC/WithRouter";
 
 class ProfileContainer extends React.Component {
-    componentDidMount() {
+
+    refreshProfileData() {
         let userId = this.props.router.params.userId
         if (!userId) {
             userId = this.props.authorizedId
@@ -23,13 +24,25 @@ class ProfileContainer extends React.Component {
         this.props.getProfileStatus(userId)
     }
 
+    componentDidMount() {
+        debugger
+        this.refreshProfileData()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        debugger
+        if (prevProps.router.params.userId != this.props.router.params.userId) {
+            this.refreshProfileData()
+        }
+    }
+
     render() {
         return (
             <Profile {...this.props}
                      userProfile={this.props.userProfile}
                      userStatus={this.props.userStatus}
                      updateStatus={this.props.updateProfileStatus}
-                     updatePhoto={this.props.updateProfilePhoto}
+                     updateProfilePhoto={this.props.updateProfilePhoto}
             />
         )
     }
@@ -42,7 +55,8 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {initializeApp,updateProfilePhoto,
+    connect(mapStateToProps, {
+        initializeApp, updateProfilePhoto,
         setUserProfile, getProfileInfo, getProfileStatus, updateProfileStatus
     }),
     withRouter,

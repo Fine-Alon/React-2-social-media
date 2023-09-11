@@ -18,7 +18,6 @@ let initialState = {
 }
 
 const reducerProfilePage = (state = initialState, action) => {
-
     switch (action.type) {
         case ADD_NEW_POST:
             let newPost = {id: '4', countOfLikes: 0, message: action.newPostText}
@@ -34,7 +33,7 @@ const reducerProfilePage = (state = initialState, action) => {
         case SET_USER_PHOTO_LARGE:
             return {
                 ...state,
-                userProfile: [...state.userProfile.photos.large, action.userPhoto]
+                userProfile: [...state.userProfile.photos, action.newPhoto.large]
             }
         case SET_USER_STATUS:
             return {
@@ -64,9 +63,10 @@ export const getProfileInfo = (userId) => {
     }
 }
 
-export const updateProfilePhoto = (data) => (dispatch) => {
-
-    dispatch(setNewPhotoAC(data))
+export const updateProfilePhoto = (file) => async (dispatch) => {
+    debugger
+    const responce = await profileAPI.setPhoto(file)
+    dispatch(setNewPhotoAC(responce.data))
 }
 
 export const getProfileStatus = (userId, statusText) => {

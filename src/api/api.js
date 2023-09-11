@@ -49,7 +49,7 @@ export const profileAPI = {
     getProfileStatus(userId) {
         return instance.get(`/profile/status/${userId}`).then(responce => responce.data)
     },
-    updateProfileStatus(text = 'this is my newest status :)))') {
+    updateProfileStatus(text = 'this is my default status from api.js :)') {
         return instance.put(`/profile/status`, {
             status: text
         }).then(responce => responce.data)
@@ -58,8 +58,16 @@ export const profileAPI = {
         return instance.get(`profile/${id}`, {}).then(response => response.data)
 
     },
-    setPhoto(file){
-
+    setPhoto(file) {
+        debugger
+        return instance.put(`/profile/photo`, {
+            image: file,
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Accept": "application/json",
+                "type": "formData",
+            },
+        }).then(responce => responce.data)
     }
 }
 

@@ -3,52 +3,50 @@ import style from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import sadSmile from "../../../assets/img/sadSmile.png";
 import luckySmile from "../../../assets/img/luckySmile.png";
+import myAvatar from "../../../assets/img/users_ava.png";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
-const ProfileInfo = (props) => {
-    if (!props.userProfile) {
+const ProfileInfo = ({userProfile, userStatus, updateStatus, ...props}) => {
+    if (!userProfile) {
         return <Preloader width={{width: "100%"}}/>
     }
 
-    const onImageChange = (target) => {
-
+    const onImageChange = (e) => {
+        let file = e.target.files[0]
+        props.updateProfilePhoto(file)
     }
 
     return (
         <div className={style.content}>
             <div className={style.data}>
-                {props.userProfile.photos.large
-                    ? <img className={style.avatar} src={props.userProfile.photos.large}/>
-                    : <img className={style.avatar}
-                           src="https://cdn.dribbble.com/userupload/9066333/file/original-b77ad6740798ed3ddb5f01e51c821124.png?resize=840x630&vertical=center"
-                           alt="profile pic"/>
-                }
+                <img className={style.avatar} src={userProfile.photos.large || myAvatar} alt="profile pic"/>
+
                 <input onChange={onImageChange} type="file" className={style.uploadBTN}/>
             </div>
-            <ProfileStatusHooks updateStatus={props.updateStatus} userStatus={props.userStatus}/>
+            <ProfileStatusHooks updateStatus={updateStatus} userStatus={userStatus}/>
 
-            <p>{props.userProfile.aboutMe}</p>
+            <p>{userProfile.aboutMe}</p>
             <ul className={style.contacts}>
                 contacts:
-                <li>{props.userProfile.contacts.facebook}</li>
-                <li>{props.userProfile.contacts.website}</li>
-                <li>{props.userProfile.contacts.vk}</li>
-                <li>{props.userProfile.contacts.twitter}</li>
-                <li>{props.userProfile.contacts.instagram}</li>
-                <li>{props.userProfile.contacts.youtube}</li>
-                <li>{props.userProfile.contacts.github}</li>
-                <li>{props.userProfile.contacts.mainLink}</li>
+                <li>{userProfile.contacts.facebook}</li>
+                <li>{userProfile.contacts.website}</li>
+                <li>{userProfile.contacts.vk}</li>
+                <li>{userProfile.contacts.twitter}</li>
+                <li>{userProfile.contacts.instagram}</li>
+                <li>{userProfile.contacts.youtube}</li>
+                <li>{userProfile.contacts.github}</li>
+                <li>{userProfile.contacts.mainLink}</li>
             </ul>
             <div className={style.isWork}>
                 <div>lookingForAJob?</div>
-                {props.userProfile.lookingForAJob ? <span><img src={luckySmile}/>what is your offer..?</span>
+                {userProfile.lookingForAJob ? <span><img src={luckySmile}/>what is your offer..?</span>
                     : <span><img src={sadSmile}/>No, sorry..</span>}
             </div>
             <div><span>Description: </span>
-                {props.userProfile.lookingForAJobDescription}
+                {userProfile.lookingForAJobDescription}
             </div>
             <div>fullName:
-                <span>  {(props.userProfile.fullName).toUpperCase()}</span>
+                <span>  {(userProfile.fullName).toUpperCase()}</span>
             </div>
         </div>
     )
