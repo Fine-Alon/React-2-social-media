@@ -4,6 +4,7 @@ const ADD_NEW_POST = 'ADD_NEW_POST'
 const DELETE_NEW_POST = 'DELETE_NEW_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
+const SET_USER_PHOTO_LARGE = 'SET_USER_PHOTO_LARGE'
 
 
 let initialState = {
@@ -30,6 +31,11 @@ const reducerProfilePage = (state = initialState, action) => {
                 ...state,
                 userProfile: action.userProfile
             }
+        case SET_USER_PHOTO_LARGE:
+            return {
+                ...state,
+                userProfile: [...state.userProfile.photos.large, action.userPhoto]
+            }
         case SET_USER_STATUS:
             return {
                 ...state,
@@ -46,6 +52,7 @@ const reducerProfilePage = (state = initialState, action) => {
 }
 
 export const addNewPostAC = (newPostText) => ({type: ADD_NEW_POST, newPostText})
+export const setNewPhotoAC = (newPhoto) => ({type: SET_USER_PHOTO_LARGE, newPhoto})
 export const deletePostAC = (id) => ({type: DELETE_NEW_POST, id})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
 export const setUserStatus = (statusText) => ({type: SET_USER_STATUS, statusText})
@@ -55,6 +62,11 @@ export const getProfileInfo = (userId) => {
         const response = await profileAPI.getProfileInfo(userId)
         dispatcher(setUserProfile(response))
     }
+}
+
+export const updateProfilePhoto = (data) => (dispatch) => {
+
+    dispatch(setNewPhotoAC(data))
 }
 
 export const getProfileStatus = (userId, statusText) => {

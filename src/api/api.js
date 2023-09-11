@@ -58,5 +58,8 @@ export const profileAPI = {
         return instance.get(`profile/${id}`, {}).then(response => response.data)
 
     },
+    setPhoto(file){
+
+    }
 }
 

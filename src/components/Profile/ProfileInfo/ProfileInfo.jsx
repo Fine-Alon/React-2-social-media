@@ -10,16 +10,22 @@ const ProfileInfo = (props) => {
         return <Preloader width={{width: "100%"}}/>
     }
 
+    const onImageChange = (target) => {
+
+    }
+
     return (
         <div className={style.content}>
             <div className={style.data}>
-                {props.userProfile.photos.large ? <img className={style.avatar} src={props.userProfile.photos.large}/>
+                {props.userProfile.photos.large
+                    ? <img className={style.avatar} src={props.userProfile.photos.large}/>
                     : <img className={style.avatar}
                            src="https://cdn.dribbble.com/userupload/9066333/file/original-b77ad6740798ed3ddb5f01e51c821124.png?resize=840x630&vertical=center"
                            alt="profile pic"/>
                 }
-                <ProfileStatusHooks updateStatus={props.updateStatus} userStatus={props.userStatus}/>
+                <input onChange={onImageChange} type="file" className={style.uploadBTN}/>
             </div>
+            <ProfileStatusHooks updateStatus={props.updateStatus} userStatus={props.userStatus}/>
 
             <p>{props.userProfile.aboutMe}</p>
             <ul className={style.contacts}>
