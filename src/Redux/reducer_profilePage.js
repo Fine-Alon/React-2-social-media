@@ -6,7 +6,6 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
 const SET_USER_PHOTO_LARGE = 'SET_USER_PHOTO_LARGE'
 
-
 let initialState = {
     postInfo: [
         {id: '1', countOfLikes: 12, message: 'I like write in the morning'},
@@ -32,9 +31,8 @@ const reducerProfilePage = (state = initialState, action) => {
             }
         case SET_USER_PHOTO_LARGE:
             return {
-                ...state,
-                userProfile: [...state.userProfile.photos, action.newPhoto.large]
-            }
+                ...state, userProfile: {...state.userProfile, photos: action.newPhotos}}
+
         case SET_USER_STATUS:
             return {
                 ...state,
@@ -51,7 +49,7 @@ const reducerProfilePage = (state = initialState, action) => {
 }
 
 export const addNewPostAC = (newPostText) => ({type: ADD_NEW_POST, newPostText})
-export const setNewPhotoAC = (newPhoto) => ({type: SET_USER_PHOTO_LARGE, newPhoto})
+export const setNewPhotosAC = (newPhotos) => ({type: SET_USER_PHOTO_LARGE, newPhotos})
 export const deletePostAC = (id) => ({type: DELETE_NEW_POST, id})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
 export const setUserStatus = (statusText) => ({type: SET_USER_STATUS, statusText})
@@ -64,9 +62,11 @@ export const getProfileInfo = (userId) => {
 }
 
 export const updateProfilePhoto = (file) => async (dispatch) => {
-    debugger
+
     const responce = await profileAPI.setPhoto(file)
-    dispatch(setNewPhotoAC(responce.data))
+    if (!responce.resultCode) {
+        dispatch(setNewPhotosAC(responce.data.photos))
+    }
 }
 
 export const getProfileStatus = (userId, statusText) => {

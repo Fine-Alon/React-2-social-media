@@ -25,13 +25,11 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         this.refreshProfileData()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        debugger
-        if (prevProps.router.params.userId != this.props.router.params.userId) {
+        if (prevProps.router.params.userId !== this.props.router.params.userId) {
             this.refreshProfileData()
         }
     }
@@ -39,6 +37,7 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <Profile {...this.props}
+                     isOwner={!this.props.router.params.userId}
                      userProfile={this.props.userProfile}
                      userStatus={this.props.userStatus}
                      updateStatus={this.props.updateProfileStatus}

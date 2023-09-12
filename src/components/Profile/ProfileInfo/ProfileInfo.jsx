@@ -6,22 +6,20 @@ import luckySmile from "../../../assets/img/luckySmile.png";
 import myAvatar from "../../../assets/img/users_ava.png";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
-const ProfileInfo = ({userProfile, userStatus, updateStatus, ...props}) => {
+const ProfileInfo = ({userProfile, userStatus, updateStatus, isOwner, ...props}) => {
     if (!userProfile) {
         return <Preloader width={{width: "100%"}}/>
     }
 
-    const onImageChange = (e) => {
-        let file = e.target.files[0]
-        props.updateProfilePhoto(file)
+    const onMainPhotoSelected = (e) => {
+        e.target.files.length && props.updateProfilePhoto(e.target.files[0])
     }
-
     return (
         <div className={style.content}>
             <div className={style.data}>
                 <img className={style.avatar} src={userProfile.photos.large || myAvatar} alt="profile pic"/>
+                {isOwner ? <input onChange={onMainPhotoSelected} type="file" className={style.uploadBTN}/> : ''}
 
-                <input onChange={onImageChange} type="file" className={style.uploadBTN}/>
             </div>
             <ProfileStatusHooks updateStatus={updateStatus} userStatus={userStatus}/>
 
