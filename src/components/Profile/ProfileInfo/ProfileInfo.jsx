@@ -16,9 +16,11 @@ const ProfileInfo = ({userProfile, userStatus, updateStatus, isOwner, ...props})
     }
     return (
         <div className={style.content}>
-            <div className={style.data}>
-                <img className={style.avatar} src={userProfile.photos.large || myAvatar} alt="profile pic"/>
-                {isOwner ? <input onChange={onMainPhotoSelected} type="file" className={style.uploadBTN}/> : ''}
+            <div className={style.top}>
+                <div className={style.avatar_wrapper}>
+                    <img className={style.avatar} src={userProfile.photos.large || myAvatar} alt="profile pic"/>
+                    {isOwner ? <input onChange={onMainPhotoSelected} type="file" className={style.uploadBTN}/> : ''}
+                </div>
 
             </div>
             <ProfileStatusHooks updateStatus={updateStatus} userStatus={userStatus}/>
