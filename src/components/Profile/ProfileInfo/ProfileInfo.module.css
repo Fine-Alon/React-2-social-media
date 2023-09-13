@@ -1,4 +1,6 @@
-
+.content{
+    padding: 10px;
+}
 .contentImg {
     height: 280px;
     width: 100%;
@@ -8,7 +10,7 @@
 }
 
 .top {
-    padding: 10px;
+   margin-bottom: 10px;
 }
 
 .avatar_wrapper {
@@ -53,12 +55,6 @@ input[type="file" i] {
     background-color: rgba(245, 175, 188, 0.93);
 }
 
-.isWork img {
-    width: 30px;
-    border-radius: 50%;
-    margin-left: 10px;
-}
-
-.isWork {
+.topic {
     margin-bottom: 10px;
 }

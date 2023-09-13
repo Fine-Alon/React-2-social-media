@@ -16,7 +16,7 @@ const ProfileStatusHooks = (props) => {
         setStatusText(e.currentTarget.value)
     }
     return (
-        <div>
+        <div style={{paddingBottom:'15px'}}>
             {editMode &&
                 <div>
                     <input type="text" autoFocus={true}
