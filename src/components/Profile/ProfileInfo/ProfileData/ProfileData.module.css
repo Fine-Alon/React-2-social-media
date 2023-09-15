@@ -1,11 +1,5 @@
-.form{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-}
-
-.submit_btn {
-    width: 50%;
+.admin_btn {
+    width: 25%;
     margin-bottom: 5px;
     background: rgba(255, 71, 66, 0.51);
     border: 1px solid #FF4742;
@@ -32,13 +26,17 @@
     transition: background-color .2s ease-in-out,color .2s ease-in-out;
 }
 
-.submit_btn:hover,
-.submit_btn:active {
+.admin_btn:hover,
+.admin_btn:active {
     background-color: initial;
     background-position: 0 0;
     color: #FF4742;
 }
 
-.submit_btn:active {
+.admin_btn:active {
     opacity: .5;
+}
+
+.topic {
+    margin-bottom: 10px;
 }

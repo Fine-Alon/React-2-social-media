@@ -1,9 +1,12 @@
-import style from "../ProfileInfo.module.css";
+import style from "./ProfileData.module.css";
+import React from "react";
 
-const ProfileData = ({userProfile}) => {
+const ProfileData = ({userProfile, isOwner, startAdminMode, ...props}) => {
 
     return (
         <>
+            {isOwner ? <button className={style.admin_btn} onClick={startAdminMode}>change data</button> : ''}
+
             <div className={style.topic}><b>looking for a job:</b>
                 {userProfile.lookingForAJob
                     ? <span>  What is your offer..?</span>

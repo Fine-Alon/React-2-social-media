@@ -8,16 +8,31 @@ const ProfileDataForm = ({userProfile, ...props}) => {
         handleSubmit,
         watch,
         formState: {errors},
-    } = useForm()
+    } = useForm({
+        defaultValues: {
+            lookingForAJob: userProfile.lookingForAJob,
+            lookingForAJobDescription: userProfile.lookingForAJobDescription,
+            fullName: userProfile.fullName,
+            aboutMe: userProfile.aboutMe,
+            github: userProfile.contacts.github,
+            vk: userProfile.contacts.vk,
+            facebook: userProfile.contacts.facebook,
+            instagram: userProfile.contacts.instagram,
+            twitter: userProfile.contacts.twitter,
+            website: userProfile.contacts.website,
+            youtube: userProfile.contacts.youtube,
+            mainLink: userProfile.contacts.mainLink,
+        }
+    })
 
     const onSubmit = (data) => console.log(data)
 
     return (<>
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-            <input type="submit"/>
+            <input className={style.submit_btn} type="submit"/>
 
             <label>looking for a job:</label>
-            <input style={{marginRight:'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
+            <input style={{marginRight: 'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
 
             <label>My skills:</label>
             <input  {...register("lookingForAJobDescription")} />

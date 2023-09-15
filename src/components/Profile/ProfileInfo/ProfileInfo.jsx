@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import style from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import myAvatar from "../../../assets/img/users_ava.png";
@@ -7,6 +7,13 @@ import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm";
 
 const ProfileInfo = ({userProfile, userStatus, updateStatus, isOwner, ...props}) => {
+
+    const [adminMode, setAdminMode] = useState(false)
+
+    let startAdminMode = () => {
+        setAdminMode(true)
+    }
+
     if (!userProfile) {
         return <Preloader width={{width: "100%"}}/>
     }
@@ -24,9 +31,10 @@ const ProfileInfo = ({userProfile, userStatus, updateStatus, isOwner, ...props})
             </div>
             <ProfileStatusHooks updateStatus={updateStatus} userStatus={userStatus}/>
 
-            {isOwner
-                ? <ProfileDataForm userProfile={userProfile}/>
-                : <ProfileData userProfile={userProfile}/>
+
+            {adminMode
+                ? <ProfileDataForm userProfile={userProfile} isOwner={isOwner}/>
+                : <ProfileData startAdminMode={startAdminMode} userProfile={userProfile} isOwner={isOwner}/>
             }
 
         </div>
