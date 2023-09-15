@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {
     getProfileInfo,
     getProfileStatus,
-    setUserProfile,
     updateProfilePhoto,
     updateProfileStatus
 } from "../../Redux/reducer_profilePage";
@@ -56,7 +55,7 @@ let mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, {
         initializeApp, updateProfilePhoto,
-        setUserProfile, getProfileInfo, getProfileStatus, updateProfileStatus
+        getProfileInfo, getProfileStatus, updateProfileStatus
     }),
     withRouter,
     withAuthRedirect,

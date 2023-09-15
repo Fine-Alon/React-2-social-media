@@ -1,5 +1,7 @@
 import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
+import {connect} from "react-redux";
+import {updateProfileInfo} from "../../../../Redux/reducer_profilePage";
 
 const ProfileDataForm = ({userProfile, ...props}) => {
 
@@ -35,34 +37,34 @@ const ProfileDataForm = ({userProfile, ...props}) => {
             <input style={{marginRight: 'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
 
             <label>My skills:</label>
-            <input  {...register("lookingForAJobDescription")} />
+            <input placeholder="JS, CSS, HTML"   {...register("lookingForAJobDescription")} />
 
             <label>Full name:</label>
-            <input {...register("fullName")} />
+            <input placeholder="John Johns"  {...register("fullName")} />
 
             <label>About me:</label>
-            <input {...register("aboutMe")} />
+            <input placeholder="I'am funny..." {...register("aboutMe")} />
 
             <b>Contacts</b>
             <label>Github:</label>
-            <input {...register("github")} />
+            <input placeholder="github" {...register("github")} />
             <label>Vk:</label>
-            <input {...register("vk")} />
+            <input  placeholder="vk"{...register("vk")} />
             <label>Facebook:</label>
-            <input {...register("facebook")} />
+            <input placeholder="facebook" {...register("facebook")} />
             <label>Instagram:</label>
-            <input {...register("instagram")} />
+            <input placeholder="instagram" {...register("instagram")} />
             <label>Twitter(X):</label>
-            <input {...register("twitter")} />
+            <input placeholder="twitter" {...register("twitter")} />
             <label>Website:</label>
-            <input {...register("website")} />
+            <input placeholder="website" {...register("website")} />
             <label>Youtube:</label>
-            <input {...register("youtube")} />
+            <input placeholder="youtube" {...register("youtube")} />
             <label>Main link:</label>
-            <input {...register("mainLink")} />
+            <input placeholder="mainLink" {...register("mainLink")} />
 
         </form>
     </>)
 }
 
-export default ProfileDataForm;
+export default connect(null,updateProfileInfo)(ProfileDataForm);

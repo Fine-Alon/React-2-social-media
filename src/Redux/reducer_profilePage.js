@@ -84,4 +84,11 @@ export const updateProfileStatus = (statusText) => {
     }
 }
 
+export const updateProfileInfo = (data) => {
+    return async (dispatcher, getState) => {
+        const response = await profileAPI.updateProfileInfo(data)
+        dispatcher(setUserProfile(response))
+    }
+}
+
 export default reducerProfilePage;
