@@ -7,6 +7,7 @@ const Profile = (props) => {
     return (
         <body className={style.content}>
         <ProfileInfo isOwner={props.isOwner}
+                     updateProfileInfo={props.updateProfileInfo}
                      updateStatus={props.updateStatus}
                      userStatus={props.userStatus}
                      updateProfilePhoto={props.updateProfilePhoto}

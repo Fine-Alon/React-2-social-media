@@ -61,6 +61,18 @@ export const getProfileInfo = (userId) => {
     }
 }
 
+export const updateProfileInfo = (data) => {
+    return async (dispatcher, getState) => {
+        const response = await profileAPI.updateProfileInfo(data)
+
+        if(response.resultCode === 0 ){
+            const payload = getState().profilePage.userProfile
+            debugger
+            dispatcher(setUserProfile(payload))
+        }
+    }
+}
+
 export const updateProfilePhoto = (file) => async (dispatch) => {
 
     const responce = await profileAPI.setPhoto(file)
@@ -84,11 +96,6 @@ export const updateProfileStatus = (statusText) => {
     }
 }
 
-export const updateProfileInfo = (data) => {
-    return async (dispatcher, getState) => {
-        const response = await profileAPI.updateProfileInfo(data)
-        dispatcher(setUserProfile(response))
-    }
-}
+
 
 export default reducerProfilePage;

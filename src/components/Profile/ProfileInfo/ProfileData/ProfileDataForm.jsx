@@ -1,9 +1,7 @@
 import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
-import {connect} from "react-redux";
-import {updateProfileInfo} from "../../../../Redux/reducer_profilePage";
 
-const ProfileDataForm = ({userProfile, ...props}) => {
+const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
 
     const {
         register,
@@ -26,8 +24,6 @@ const ProfileDataForm = ({userProfile, ...props}) => {
             mainLink: userProfile.contacts.mainLink,
         }
     })
-
-    const onSubmit = (data) => console.log(data)
 
     return (<>
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
@@ -67,4 +63,4 @@ const ProfileDataForm = ({userProfile, ...props}) => {
     </>)
 }
 
-export default connect(null,updateProfileInfo)(ProfileDataForm);
+export default ProfileDataForm;
