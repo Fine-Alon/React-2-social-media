@@ -11,6 +11,8 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
         reset,
         formState: {errors},
     } = useForm({
+        mode: "onBlur",
+        criteriaMode: 'all',
         defaultValues: {
             lookingForAJob: userProfile.lookingForAJob,
             lookingForAJobDescription: userProfile.lookingForAJobDescription,
@@ -31,8 +33,8 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
 
     const onSubmit = (data) => {
         updateProfileInfo(data, setError)
-        onSubmitCallback()
-        reset({
+console.log(data)
+        /*reset({
             lookingForAJob: '',
             lookingForAJobDescription: '',
             fullName: '',
@@ -47,7 +49,8 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
                 youtube: '',
                 mainLink: ''
             },
-        })
+        })*/
+        onSubmitCallback()
     }
 
     return (<>
@@ -83,7 +86,10 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
             <input placeholder="youtube" {...register("contacts.youtube")} />
             <label>Main link:</label>
             <input placeholder="mainLink" {...register("contacts.mainLink")} />
-            {errors.serverError && <div><p>{errors.serverError.type}</p><p>{errors.serverError.message}</p></div>}
+            {errors.serverError && <div>
+                <p style={{fontSize: '20px', fontWeight: 'bold'}}>{errors.serverError.type}</p>
+                {errors.serverError.messages.map(m => <p style={{fontWeight: 'bold', color: 'red'}} key={m}>{m}</p>)}
+            </div>}
         </form>
     </>)
 }

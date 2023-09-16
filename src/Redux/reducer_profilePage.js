@@ -62,19 +62,18 @@ export const getProfileInfo = (userId) => {
     }
 }
 
-export const updateProfileInfo = (data,setError) => {
+export const updateProfileInfo = (data, setError) => {
     return async (dispatcher, getState) => {
         const response = await profileAPI.updateProfileInfo(data)
 
         if (response.resultCode === 0) {
             const userId = getState().userAuth.authUserId
             dispatcher(getProfileInfo(userId))
-        }else if (response.resultCode !== 0){
+        } else if (response.resultCode !== 0) {
             setError('serverError', {
-                type: 'response.message[0]',
-                message: response.messages[0]
+                type: 'Attention!!! Server response messages: ',
+                messages: response.messages
             })
-            console.log(response.messages)
         }
     }
 }
