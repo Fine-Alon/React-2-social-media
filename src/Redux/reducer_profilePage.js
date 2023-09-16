@@ -72,9 +72,9 @@ export const updateProfileInfo = (data,setError) => {
         }else if (response.resultCode !== 0){
             setError('serverError', {
                 type: 'response.message[0]',
-                message: response
+                message: response.messages[0]
             })
-            console.log(response.messages[0])
+            console.log(response.messages)
         }
     }
 }

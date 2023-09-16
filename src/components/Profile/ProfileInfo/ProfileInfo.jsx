@@ -22,9 +22,8 @@ const ProfileInfo = ({userProfile, updateProfileInfo, userStatus, updateStatus, 
         e.target.files.length && props.updateProfilePhoto(e.target.files[0])
     }
 
-    const handleProfileDataFormSubmit = (data,setError) => {
-        updateProfileInfo(data,setError)
-        setAdminMode(false)
+    const handleProfileDataFormSubmit = () => {
+        // setAdminMode(false)
     }
 
     return (
@@ -39,7 +38,7 @@ const ProfileInfo = ({userProfile, updateProfileInfo, userStatus, updateStatus, 
 
             {adminMode
                 ? <ProfileDataForm onSubmitCallback={handleProfileDataFormSubmit}
-                                   userProfile={userProfile} isOwner={isOwner}/>
+                                   updateProfileInfo={updateProfileInfo} userProfile={userProfile} isOwner={isOwner}/>
                 : <ProfileData startAdminMode={startAdminMode} userProfile={userProfile} isOwner={isOwner}/>
             }
         </div>

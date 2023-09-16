@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
 
-const ProfileDataForm = ({userProfile,onSubmitCallback, ...props}) => {
+const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...props}) => {
 
     const {
         register,
@@ -29,8 +29,25 @@ const ProfileDataForm = ({userProfile,onSubmitCallback, ...props}) => {
         }
     })
 
-    const onSubmit = (data,setError)=>{
-        onSubmitCallback(data,setError)
+    const onSubmit = (data) => {
+        updateProfileInfo(data, setError)
+        onSubmitCallback()
+        reset({
+            lookingForAJob: '',
+            lookingForAJobDescription: '',
+            fullName: '',
+            aboutMe: '',
+            contacts: {
+                github: '',
+                vk: '',
+                facebook: '',
+                instagram: '',
+                twitter: '',
+                website: '',
+                youtube: '',
+                mainLink: ''
+            },
+        })
     }
 
     return (<>
@@ -66,7 +83,7 @@ const ProfileDataForm = ({userProfile,onSubmitCallback, ...props}) => {
             <input placeholder="youtube" {...register("contacts.youtube")} />
             <label>Main link:</label>
             <input placeholder="mainLink" {...register("contacts.mainLink")} />
-            {errors.serverError && <p>server response message</p>}
+            {errors.serverError && <div><p>{errors.serverError.type}</p><p>{errors.serverError.message}</p></div>}
         </form>
     </>)
 }
