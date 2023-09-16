@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 const ProfileStatusHooks = (props) => {
-
     let [editMode, setEditMode] = useState(false)
     let [statusText, setStatusText] = useState(props.userStatus)
 

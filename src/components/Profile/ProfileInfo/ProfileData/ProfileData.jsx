@@ -25,18 +25,21 @@ const ProfileData = ({userProfile, isOwner, startAdminMode, ...props}) => {
             </div>
             <div className={style.topic}><b>Contacts:</b>
                 <ul className={style.contacts}>
-                    <li>{userProfile.contacts.github}</li>
-                    <li>{userProfile.contacts.vk}</li>
-                    <li>{userProfile.contacts.facebook}</li>
-                    <li>{userProfile.contacts.instagram}</li>
-                    <li>{userProfile.contacts.twitter}</li>
-                    <li>{userProfile.contacts.website}</li>
-                    <li>{userProfile.contacts.youtube}</li>
-                    <li>{userProfile.contacts.mainLink}</li>
+                    {/* Object.keys - create string from inner Obj */}
+                    {/* so we do map(key) to create Contacts */}
+                    {Object.keys(userProfile.contacts).map(key => {
+                     return <Contact key={key} title={key} value={userProfile.contacts[key]}/>
+                    })}
                 </ul>
             </div>
         </>
     )
+}
+
+const Contact = ({title, value}) => {
+    return (<li>
+        <b>{title}:</b> {value}
+    </li>)
 }
 
 export default ProfileData;

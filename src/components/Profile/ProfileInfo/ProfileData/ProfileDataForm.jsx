@@ -7,6 +7,7 @@ const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: {errors},
     } = useForm({
         defaultValues: {
@@ -43,24 +44,25 @@ const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
 
             <b>Contacts</b>
             <label>Github:</label>
-            <input placeholder="github" {...register("github")} />
+            <input placeholder="github" {...register("contacts.github")} />
             <label>Vk:</label>
-            <input  placeholder="vk"{...register("vk")} />
+            <input  placeholder="vk"{...register("contacts.vk")} />
             <label>Facebook:</label>
-            <input placeholder="facebook" {...register("facebook")} />
+            <input placeholder="facebook" {...register("contacts.facebook")} />
             <label>Instagram:</label>
-            <input placeholder="instagram" {...register("instagram")} />
+            <input placeholder="instagram" {...register("contacts.instagram")} />
             <label>Twitter(X):</label>
-            <input placeholder="twitter" {...register("twitter")} />
+            <input placeholder="twitter" {...register("contacts.twitter")} />
             <label>Website:</label>
-            <input placeholder="website" {...register("website")} />
+            <input placeholder="website" {...register("contacts.website")} />
             <label>Youtube:</label>
-            <input placeholder="youtube" {...register("youtube")} />
+            <input placeholder="youtube" {...register("contacts.youtube")} />
             <label>Main link:</label>
-            <input placeholder="mainLink" {...register("mainLink")} />
+            <input placeholder="mainLink" {...register("contacts.mainLink")} />
 
         </form>
     </>)
 }
+
 
 export default ProfileDataForm;

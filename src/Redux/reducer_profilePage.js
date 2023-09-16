@@ -13,7 +13,7 @@ let initialState = {
         {id: '3', countOfLikes: 25, message: 'so how are u today'},
     ],
     userProfile: null,
-    userStatus: 'initial status from reducer',
+    userStatus: 'status in reducer',
 }
 
 const reducerProfilePage = (state = initialState, action) => {
@@ -31,7 +31,8 @@ const reducerProfilePage = (state = initialState, action) => {
             }
         case SET_USER_PHOTO_LARGE:
             return {
-                ...state, userProfile: {...state.userProfile, photos: action.newPhotos}}
+                ...state, userProfile: {...state.userProfile, photos: action.newPhotos}
+            }
 
         case SET_USER_STATUS:
             return {
@@ -65,10 +66,9 @@ export const updateProfileInfo = (data) => {
     return async (dispatcher, getState) => {
         const response = await profileAPI.updateProfileInfo(data)
 
-        if(response.resultCode === 0 ){
-            const payload = getState().profilePage.userProfile
-            debugger
-            dispatcher(setUserProfile(payload))
+        if (response.resultCode === 0) {
+            const userId = getState().userAuth.authUserId
+            dispatcher(getProfileInfo(userId))
         }
     }
 }
@@ -95,7 +95,6 @@ export const updateProfileStatus = (statusText) => {
         }
     }
 }
-
 
 
 export default reducerProfilePage;
