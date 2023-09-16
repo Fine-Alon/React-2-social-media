@@ -31,7 +31,6 @@ const Login = (props) => {
             rememberMe: false
         }, {keepErrors: true})
     }
-    // console.log(watch()) // watch input value by passing the name of it
 
     if (props.isAuth) {
         return <Navigate to="/profile"/>

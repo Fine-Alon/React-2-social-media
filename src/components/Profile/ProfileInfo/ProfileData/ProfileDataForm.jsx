@@ -1,11 +1,12 @@
 import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
 
-const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
+const ProfileDataForm = ({userProfile,onSubmitCallback, ...props}) => {
 
     const {
         register,
         handleSubmit,
+        setError,
         watch,
         reset,
         formState: {errors},
@@ -15,16 +16,22 @@ const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
             lookingForAJobDescription: userProfile.lookingForAJobDescription,
             fullName: userProfile.fullName,
             aboutMe: userProfile.aboutMe,
-            github: userProfile.contacts.github,
-            vk: userProfile.contacts.vk,
-            facebook: userProfile.contacts.facebook,
-            instagram: userProfile.contacts.instagram,
-            twitter: userProfile.contacts.twitter,
-            website: userProfile.contacts.website,
-            youtube: userProfile.contacts.youtube,
-            mainLink: userProfile.contacts.mainLink,
+            contacts: {
+                github: userProfile.contacts.github,
+                vk: userProfile.contacts.vk,
+                facebook: userProfile.contacts.facebook,
+                instagram: userProfile.contacts.instagram,
+                twitter: userProfile.contacts.twitter,
+                website: userProfile.contacts.website,
+                youtube: userProfile.contacts.youtube,
+                mainLink: userProfile.contacts.mainLink
+            },
         }
     })
+
+    const onSubmit = (data,setError)=>{
+        onSubmitCallback(data,setError)
+    }
 
     return (<>
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
@@ -46,7 +53,7 @@ const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
             <label>Github:</label>
             <input placeholder="github" {...register("contacts.github")} />
             <label>Vk:</label>
-            <input  placeholder="vk"{...register("contacts.vk")} />
+            <input placeholder="vk"{...register("contacts.vk")} />
             <label>Facebook:</label>
             <input placeholder="facebook" {...register("contacts.facebook")} />
             <label>Instagram:</label>
@@ -59,7 +66,7 @@ const ProfileDataForm = ({userProfile,onSubmit, ...props}) => {
             <input placeholder="youtube" {...register("contacts.youtube")} />
             <label>Main link:</label>
             <input placeholder="mainLink" {...register("contacts.mainLink")} />
-
+            {errors.serverError && <p>server response message</p>}
         </form>
     </>)
 }

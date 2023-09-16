@@ -68,7 +68,6 @@ export const profileAPI = {
         }).then(responce => responce.data)
     },
     updateProfileInfo(data) {
-        debugger
         return instance.put(`profile`, data).then(responce => responce.data)
     },
 }
