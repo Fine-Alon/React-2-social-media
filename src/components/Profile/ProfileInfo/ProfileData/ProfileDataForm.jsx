@@ -7,11 +7,12 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
         register,
         handleSubmit,
         setError,
+        clearErrors,
         watch,
         reset,
         formState: {errors},
     } = useForm({
-        mode: "onBlur",
+        mode: "onChange",
         criteriaMode: 'all',
         defaultValues: {
             lookingForAJob: userProfile.lookingForAJob,
@@ -33,7 +34,6 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
 
     const onSubmit = (data) => {
         updateProfileInfo(data, setError)
-console.log(data)
         /*reset({
             lookingForAJob: '',
             lookingForAJobDescription: '',
@@ -50,15 +50,22 @@ console.log(data)
                 mainLink: ''
             },
         })*/
-        onSubmitCallback()
     }
 
     return (<>
-        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={style.form}  onSubmit={handleSubmit(onSubmit)}>
             <input className={style.submit_btn} type="submit"/>
 
+            <button className={style.submit_btn} type="button" onClick={() =>  onSubmitCallback()}>
+                Return
+            </button>
+
+            <button className={style.submit_btn} type="button" onClick={() =>  clearErrors()}>
+                Clear Errors
+            </button>
+
             <label>looking for a job:</label>
-            <input style={{marginRight: 'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
+            <input  style={{marginRight: 'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
 
             <label>My skills:</label>
             <input placeholder="JS, CSS, HTML"   {...register("lookingForAJobDescription")} />

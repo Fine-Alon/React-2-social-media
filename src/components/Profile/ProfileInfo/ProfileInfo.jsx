@@ -23,7 +23,7 @@ const ProfileInfo = ({userProfile, updateProfileInfo, userStatus, updateStatus, 
     }
 
     const handleProfileDataFormSubmit = () => {
-        // setAdminMode(false)
+         setAdminMode(false)
     }
 
     return (
