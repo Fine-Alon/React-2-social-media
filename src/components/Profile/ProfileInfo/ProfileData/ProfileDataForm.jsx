@@ -5,6 +5,10 @@ import {useState} from "react";
 const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...props}) => {
     let [isSubmitSuccess, setSubmitSuccess] = useState(false)
 
+    const capitalizeFirstLetter = (text) => {
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
     const {
         register,
         handleSubmit,
@@ -88,8 +92,19 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
             <label>About me:</label>
             <input placeholder="I'am funny..." {...register("aboutMe")} />
 
-            <b>Contacts</b>
-            <label>Github:</label>
+
+            <h4 style={{marginBottom:'0'}}>Contacts</h4>
+            <ul className={style.contacts_ul}>
+                {Object.entries(userProfile.contacts).map(([label, fieldName]) => {
+                    return (<li key={`${label}input`} className={style.contacts_li}>
+                        <label>{capitalizeFirstLetter(label)}:</label>
+                        <input placeholder={label} {...register(`contacts.${label}`)}
+                               onChange={() => handleClearFieldErrors()}/>
+                    </li>)
+                })}</ul>
+
+
+            {/*    <label>Github:</label>
             <input placeholder="github" {...register("contacts.github")} onChange={() => handleClearFieldErrors()}/>
             <label>Vk:</label>
             <input placeholder="vk"{...register("contacts.vk")} onChange={() => handleClearFieldErrors()}/>
@@ -106,10 +121,10 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
             <input placeholder="youtube" {...register("contacts.youtube")} onChange={() => handleClearFieldErrors()}/>
             <label>Main link:</label>
             <input placeholder="mainLink" {...register("contacts.mainLink")} onChange={() => handleClearFieldErrors()}/>
-            {errors.serverError && <div className={style.error_msg__box}>
-                <p>{errors.serverError.type}</p>
-                {errors.serverError.messages.map(m => <p className={style.error_msg} key={m}>{m}</p>)}
-            </div>}
+           */} {errors.serverError && <div className={style.error_msg__box}>
+            <p>{errors.serverError.type}</p>
+            {errors.serverError.messages.map(m => <p className={style.error_msg} key={m}>{m}</p>)}
+        </div>}
         </form>
     </>)
 }

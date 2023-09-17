@@ -98,3 +98,13 @@
     font-size: 14px;
     color:#da3e00;
 }
+
+.contacts_ul{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.contacts_li{
+    display: flex;
+    flex-direction: column;
+}
