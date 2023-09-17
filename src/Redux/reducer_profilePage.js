@@ -4,6 +4,7 @@ const ADD_NEW_POST = 'ADD_NEW_POST'
 const DELETE_NEW_POST = 'DELETE_NEW_POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS'
+const SET_SENDING_SUCCESS = 'SET_SEND_SUCCESS'
 const SET_USER_PHOTO_LARGE = 'SET_USER_PHOTO_LARGE'
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
     ],
     userProfile: null,
     userStatus: 'status in reducer',
+    sendingSuccess: false,
 }
 
 const reducerProfilePage = (state = initialState, action) => {
@@ -39,6 +41,11 @@ const reducerProfilePage = (state = initialState, action) => {
                 ...state,
                 userStatus: action.statusText
             }
+        case SET_SENDING_SUCCESS:
+            return {
+                ...state,
+                sendingSuccess: action.isSuccess
+            }
         case DELETE_NEW_POST:
             return {
                 ...state,
@@ -50,6 +57,7 @@ const reducerProfilePage = (state = initialState, action) => {
 }
 
 export const addNewPostAC = (newPostText) => ({type: ADD_NEW_POST, newPostText})
+export const setSendingSuccess = (isSuccess) => ({type: SET_SENDING_SUCCESS, isSuccess})
 export const setNewPhotosAC = (newPhotos) => ({type: SET_USER_PHOTO_LARGE, newPhotos})
 export const deletePostAC = (id) => ({type: DELETE_NEW_POST, id})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
@@ -69,11 +77,13 @@ export const updateProfileInfo = (data, setError) => {
         if (response.resultCode === 0) {
             const userId = getState().userAuth.authUserId
             dispatcher(getProfileInfo(userId))
+            dispatcher(setSendingSuccess(true))
         } else if (response.resultCode !== 0) {
             setError('serverError', {
                 type: 'Attention!!! Server response messages: ',
                 messages: response.messages
             })
+            dispatcher(setSendingSuccess(false))
         }
     }
 }

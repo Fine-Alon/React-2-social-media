@@ -2,7 +2,7 @@ import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
 import {useState} from "react";
 
-const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...props}) => {
+const ProfileDataForm = ({userProfile,sendingSuccess, updateProfileInfo, onSubmitCallback, ...props}) => {
     let [isSubmitSuccess, setSubmitSuccess] = useState(false)
 
     const capitalizeFirstLetter = (text) => {
@@ -40,8 +40,8 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
 
     const onSubmit = (data) => {
         updateProfileInfo(data, setError)
-
-        setSubmitSuccess(true)
+        setSubmitSuccess(false)
+        onSubmitCallback(false)
         setTimeout(() => {
             setSubmitSuccess(false)
         }, 4000)
@@ -76,7 +76,7 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
             <input className={style.submit_btn} type="submit"/>
 
-            <button className={style.return_btn} type="button" onClick={() => onSubmitCallback()}>
+            <button className={style.return_btn} type="button" onClick={() => onSubmitCallback(false)}>
                 Back
             </button>
 

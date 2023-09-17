@@ -10,6 +10,7 @@ const Profile = (props) => {
                      updateProfileInfo={props.updateProfileInfo}
                      updateStatus={props.updateStatus}
                      userStatus={props.userStatus}
+                     sendingSuccess={props.sendingSuccess}
                      updateProfilePhoto={props.updateProfilePhoto}
                      userProfile={props.userProfile}/>
         <MyPostsContainer/>
