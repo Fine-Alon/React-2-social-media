@@ -1,7 +1,9 @@
 import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
+import {useState} from "react";
 
 const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...props}) => {
+    let [isSubmitSuccess, setSubmitSuccess] = useState(false)
 
     const {
         register,
@@ -34,6 +36,11 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
 
     const onSubmit = (data) => {
         updateProfileInfo(data, setError)
+
+        setSubmitSuccess(true)
+        setTimeout(() => {
+            setSubmitSuccess(false)
+        }, 4000)
         /*reset({
             lookingForAJob: '',
             lookingForAJobDescription: '',
@@ -52,20 +59,25 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
         })*/
     }
 
+    const handleClearFieldErrors = () => {
+        clearErrors();
+        setSubmitSuccess(false)
+    };
+
     return (<>
-        <form className={style.form}  onSubmit={handleSubmit(onSubmit)}>
+        {isSubmitSuccess && <div className={style.success}>
+            Your form was submitted successfully!
+        </div>}
+
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
             <input className={style.submit_btn} type="submit"/>
 
-            <button className={style.submit_btn} type="button" onClick={() =>  onSubmitCallback()}>
-                Return
-            </button>
-
-            <button className={style.submit_btn} type="button" onClick={() =>  clearErrors()}>
-                Clear Errors
+            <button className={style.return_btn} type="button" onClick={() => onSubmitCallback()}>
+                Back
             </button>
 
             <label>looking for a job:</label>
-            <input  style={{marginRight: 'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
+            <input style={{marginRight: 'auto'}} type={"checkbox"} {...register("lookingForAJob")} />
 
             <label>My skills:</label>
             <input placeholder="JS, CSS, HTML"   {...register("lookingForAJobDescription")} />
@@ -78,24 +90,25 @@ const ProfileDataForm = ({userProfile, updateProfileInfo, onSubmitCallback, ...p
 
             <b>Contacts</b>
             <label>Github:</label>
-            <input placeholder="github" {...register("contacts.github")} />
+            <input placeholder="github" {...register("contacts.github")} onChange={() => handleClearFieldErrors()}/>
             <label>Vk:</label>
-            <input placeholder="vk"{...register("contacts.vk")} />
+            <input placeholder="vk"{...register("contacts.vk")} onChange={() => handleClearFieldErrors()}/>
             <label>Facebook:</label>
-            <input placeholder="facebook" {...register("contacts.facebook")} />
+            <input placeholder="facebook" {...register("contacts.facebook")} onChange={() => handleClearFieldErrors()}/>
             <label>Instagram:</label>
-            <input placeholder="instagram" {...register("contacts.instagram")} />
+            <input placeholder="instagram" {...register("contacts.instagram")}
+                   onChange={() => handleClearFieldErrors()}/>
             <label>Twitter(X):</label>
-            <input placeholder="twitter" {...register("contacts.twitter")} />
+            <input placeholder="twitter" {...register("contacts.twitter")} onChange={() => handleClearFieldErrors()}/>
             <label>Website:</label>
-            <input placeholder="website" {...register("contacts.website")} />
+            <input placeholder="website" {...register("contacts.website")} onChange={() => handleClearFieldErrors()}/>
             <label>Youtube:</label>
-            <input placeholder="youtube" {...register("contacts.youtube")} />
+            <input placeholder="youtube" {...register("contacts.youtube")} onChange={() => handleClearFieldErrors()}/>
             <label>Main link:</label>
-            <input placeholder="mainLink" {...register("contacts.mainLink")} />
-            {errors.serverError && <div>
-                <p style={{fontSize: '20px', fontWeight: 'bold'}}>{errors.serverError.type}</p>
-                {errors.serverError.messages.map(m => <p style={{fontWeight: 'bold', color: 'red'}} key={m}>{m}</p>)}
+            <input placeholder="mainLink" {...register("contacts.mainLink")} onChange={() => handleClearFieldErrors()}/>
+            {errors.serverError && <div className={style.error_msg__box}>
+                <p>{errors.serverError.type}</p>
+                {errors.serverError.messages.map(m => <p className={style.error_msg} key={m}>{m}</p>)}
             </div>}
         </form>
     </>)

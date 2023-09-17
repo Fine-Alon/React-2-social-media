@@ -1,4 +1,4 @@
-.form{
+.form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    transition: background-color .2s ease-in-out,color .2s ease-in-out;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
 }
 
 .submit_btn:hover,
@@ -41,4 +41,60 @@
 
 .submit_btn:active {
     opacity: .5;
+}
+
+.return_btn {
+    width: 50%;
+    margin-bottom: 5px;
+    background: rgba(118, 79, 255, 0.51);
+    border: 1px solid #6e14ff;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 8px;
+    min-height: 20px;
+    outline: 0;
+    padding: 6px 7px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.return_btn:hover,
+.return_btn:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #6e14ff;
+}
+
+.return_btn:active {
+    opacity: .5;
+}
+
+.success {
+    font-weight: bold;
+    color: green;
+    font-size: 20px;
+}
+
+.error_msg__box {
+    font-weight: bold;
+    font-size: 22px;
+    color: #ee4d4d;
+}
+
+.error_msg{
+    font-size: 14px;
+    color:#da3e00;
 }
