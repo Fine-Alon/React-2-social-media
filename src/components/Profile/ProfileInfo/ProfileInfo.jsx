@@ -22,12 +22,8 @@ const ProfileInfo = ({userProfile, updateProfileInfo, sendingSuccess, userStatus
         e.target.files.length && props.updateProfilePhoto(e.target.files[0])
     }
 
-    const handleProfileDataFormSubmit = (isSuccess) => {
-        if(sendingSuccess){
-           setAdminMode(isSuccess)
-        }
-        console.log(sendingSuccess)
-        console.log(adminMode)
+    const handleProfileDataFormSubmit = () => {
+           setAdminMode(false)
     }
 
     return (

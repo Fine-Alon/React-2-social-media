@@ -2,12 +2,13 @@ import {useForm} from "react-hook-form";
 import style from "./ProfileDataForm.module.css";
 import {useState} from "react";
 
-const ProfileDataForm = ({userProfile,sendingSuccess, updateProfileInfo, onSubmitCallback, ...props}) => {
-    let [isSubmitSuccess, setSubmitSuccess] = useState(false)
+const ProfileDataForm = ({userProfile, sendingSuccess, updateProfileInfo, onSubmitCallback, ...props}) => {
 
     const capitalizeFirstLetter = (text) => {
         return text.charAt(0).toUpperCase() + text.slice(1);
     }
+
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
     const {
         register,
@@ -40,11 +41,7 @@ const ProfileDataForm = ({userProfile,sendingSuccess, updateProfileInfo, onSubmi
 
     const onSubmit = (data) => {
         updateProfileInfo(data, setError)
-        setSubmitSuccess(false)
-        onSubmitCallback(false)
-        setTimeout(() => {
-            setSubmitSuccess(false)
-        }, 4000)
+        setShowSuccessMessage(true)
         /*reset({
             lookingForAJob: '',
             lookingForAJobDescription: '',
@@ -65,18 +62,22 @@ const ProfileDataForm = ({userProfile,sendingSuccess, updateProfileInfo, onSubmi
 
     const handleClearFieldErrors = () => {
         clearErrors();
-        setSubmitSuccess(false)
+        setShowSuccessMessage(false)
     };
 
     return (<>
-        {isSubmitSuccess && <div className={style.success}>
-            Your form was submitted successfully!
-        </div>}
+        {(showSuccessMessage && sendingSuccess)
+            ? <div className={style.success}> Your form was submitted successfully!</div>
+            : null}
+
+        {(showSuccessMessage && !sendingSuccess)
+            ? <div className={style.error_msg__box}> Your form has submitted with Error!</div>
+            : null}
 
         <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
             <input className={style.submit_btn} type="submit"/>
 
-            <button className={style.return_btn} type="button" onClick={() => onSubmitCallback(false)}>
+            <button className={style.return_btn} type="button" onClick={() => onSubmitCallback()}>
                 Back
             </button>
 
@@ -93,7 +94,7 @@ const ProfileDataForm = ({userProfile,sendingSuccess, updateProfileInfo, onSubmi
             <input placeholder="I'am funny..." {...register("aboutMe")} />
 
 
-            <h4 style={{marginBottom:'0'}}>Contacts</h4>
+            <h4 style={{marginBottom: '0'}}>Contacts</h4>
             <ul className={style.contacts_ul}>
                 {Object.entries(userProfile.contacts).map(([label, fieldName]) => {
                     return (<li key={`${label}input`} className={style.contacts_li}>
