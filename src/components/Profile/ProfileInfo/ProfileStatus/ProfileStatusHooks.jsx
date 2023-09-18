@@ -5,6 +5,7 @@ const ProfileStatusHooks = (props) => {
     let [statusText, setStatusText] = useState(props.userStatus)
 
     const activateEditMode = () => {
+        setStatusText(props.userStatus)
         setEditMode(true)
     }
     const deactivateEditMode = () => {
