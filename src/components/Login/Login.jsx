@@ -22,8 +22,8 @@ const Login = (props) => {
         criteriaMode: 'all',
     })
     const onSubmit = (data) => {
-        const {email, password, rememberMe} = data
-        props.loginUser(email, password, rememberMe, setError)
+        const {email, password, rememberMe, captcha} = data
+        props.loginUser(email, password, rememberMe, captcha, setError)
 
         reset({
             email: '',
@@ -74,6 +74,11 @@ const Login = (props) => {
                     <input type="checkbox"{...register('rememberMe')}/>
                     <span>remember me</span>
                 </div>
+                {props.captchaURL && <div>
+                    <img src={props.captchaURL}/>
+                    <div><input type='text' {...register("captcha", {required: true})}/></div>
+                </div>}
+
                 {errors.server && <div><span className={style.error}>{errors.server.message}</span>
                 </div>
                 }
@@ -84,6 +89,7 @@ const Login = (props) => {
 }
 const mapStateToProps = (state) => ({
     isAuth: state.userAuth.isAuth,
+    captchaURL: state.userAuth.captchaURL,
     serverErrorMessage: state.userAuth.serverErrorMessage,
 })
 

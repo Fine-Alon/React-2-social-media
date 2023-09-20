@@ -15,16 +15,20 @@ export const authAPI = {
             instance.get(`auth/me`, {}).then(response => response.data)
         )
     },
-    login(email, password, rememberMe) {
-        return (
-            instance.post(`/auth/login`, {email, password, rememberMe}).then(response => response.data)
-        )
+    login(email, password, rememberMe, captcha) {
+        return instance.post(`/auth/login`, {email, password, rememberMe, captcha}).then(response => response.data)
+
     },
     logout() {
         return (
             instance.delete(`/auth/login`).then(response => response.data)
         )
     }
+}
+export const securityAPI = {
+    getCaptchaURL() {
+        return axios.get('https://social-network.samuraijs.com/api/1.0/security/get-captcha-url')
+    },
 }
 export const usersAPI = {
     getUsers(countPerPage = 10, currentPage = 1) {
