@@ -2,7 +2,7 @@ import React, {lazy} from 'react'
 import './App.module.css';
 import NavBar from './components/NavBar/NavBar';
 import Music from "./components/Music/Music";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import style from './App.module.css'
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -24,7 +24,6 @@ const FriendContainerWithSuspense = WithSuspenseLazy(FriendContainer)
 class App extends React.Component<{}> {
     componentDidMount() {
         this.props.initializeApp()
-
     }
 
     render() {
@@ -48,6 +47,8 @@ class App extends React.Component<{}> {
                                element={<FriendContainerWithSuspense/>}/>
                         <Route path={'/settings'} element={<Settings/>}/>
                         <Route path={'/login'} element={<Login/>}/>
+                        <Route path="/" element={<Navigate to="/profile"/>}/>
+                        <Route path='*' element={<div>NOT FOUND 404</div>}/>
                     </Routes>
                 </div>
             </div>
