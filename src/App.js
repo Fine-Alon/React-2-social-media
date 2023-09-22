@@ -9,7 +9,7 @@ import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import Preloader from "./components/common/Preloader/Preloader";
+import ErrorBoundary from "./components/common/Preloader/ErrorBoundary";
 import {initializeApp} from "./Redux/reducer_app";
 import {WithSuspenseLazy} from "./HOC/WithSuspenseLazy";
 
@@ -28,7 +28,7 @@ class App extends React.Component<{}> {
 
     render() {
         if (!this.props.isInitialized) {
-            return <Preloader width={{width: "100%"}}/>
+            return <ErrorBoundary width={{width: "100%"}}/>
         }
 
         return (

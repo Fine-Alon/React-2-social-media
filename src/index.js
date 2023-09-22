@@ -6,6 +6,7 @@ import {HashRouter as Router} from "react-router-dom";
 import App from "./App";
 import store from "./Redux/redux_store";
 import {Provider} from "react-redux";
+import ErrorBoundary from "./components/common/Preloader/ErrorBoundary";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let renderEntireThree = (state) => {
@@ -13,7 +14,9 @@ export let renderEntireThree = (state) => {
         <React.StrictMode>
             <Router>
                 <Provider store={store}>
-                    <App/>
+                    <ErrorBoundary fallback={<p>Something went wrong</p>}>
+                        <App/>
+                    </ErrorBoundary>
                 </Provider>
             </Router>
         </React.StrictMode>

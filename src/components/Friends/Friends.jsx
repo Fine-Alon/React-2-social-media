@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Friends.module.css"
-import Preloader from "../common/Preloader/Preloader";
+import ErrorBoundary from "../common/Preloader/ErrorBoundary";
 import Paginator from "../common/Paginator/Paginator";
 import Friend from "./Friend";
 
@@ -14,7 +14,7 @@ const Friends = (props) => {
                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
 
             {props.isFetching
-                ? <Preloader width={{width: "120px"}}/>
+                ? <ErrorBoundary width={{width: "120px"}}/>
 
                 : props.users.map(u =>  <Friend user={u} followingProgress={props.followingProgress}
                                                subscribeFollower={props.subscribeFollower}
