@@ -1,28 +1,28 @@
 {
   "files": {
     "main.css": "/React-2-social-media/static/css/main.afecfa8c.css",
-    "main.js": "/React-2-social-media/static/js/main.13c4fe9b.js",
+    "main.js": "/React-2-social-media/static/js/main.5ecb35d4.js",
     "static/css/873.a44d8b95.chunk.css": "/React-2-social-media/static/css/873.a44d8b95.chunk.css",
     "static/js/873.04723cc6.chunk.js": "/React-2-social-media/static/js/873.04723cc6.chunk.js",
     "static/css/304.38054c10.chunk.css": "/React-2-social-media/static/css/304.38054c10.chunk.css",
-    "static/js/304.39dcec4a.chunk.js": "/React-2-social-media/static/js/304.39dcec4a.chunk.js",
+    "static/js/304.4fa4dd9c.chunk.js": "/React-2-social-media/static/js/304.4fa4dd9c.chunk.js",
     "static/css/838.dbd7a8ba.chunk.css": "/React-2-social-media/static/css/838.dbd7a8ba.chunk.css",
     "static/js/838.b510990e.chunk.js": "/React-2-social-media/static/js/838.b510990e.chunk.js",
     "static/js/787.f08db970.chunk.js": "/React-2-social-media/static/js/787.f08db970.chunk.js",
     "static/media/users_ava.png": "/React-2-social-media/static/media/users_ava.07bb4975e4c32fc1a3ea.png",
     "index.html": "/React-2-social-media/index.html",
     "main.afecfa8c.css.map": "/React-2-social-media/static/css/main.afecfa8c.css.map",
-    "main.13c4fe9b.js.map": "/React-2-social-media/static/js/main.13c4fe9b.js.map",
+    "main.5ecb35d4.js.map": "/React-2-social-media/static/js/main.5ecb35d4.js.map",
     "873.a44d8b95.chunk.css.map": "/React-2-social-media/static/css/873.a44d8b95.chunk.css.map",
     "873.04723cc6.chunk.js.map": "/React-2-social-media/static/js/873.04723cc6.chunk.js.map",
     "304.38054c10.chunk.css.map": "/React-2-social-media/static/css/304.38054c10.chunk.css.map",
-    "304.39dcec4a.chunk.js.map": "/React-2-social-media/static/js/304.39dcec4a.chunk.js.map",
+    "304.4fa4dd9c.chunk.js.map": "/React-2-social-media/static/js/304.4fa4dd9c.chunk.js.map",
     "838.dbd7a8ba.chunk.css.map": "/React-2-social-media/static/css/838.dbd7a8ba.chunk.css.map",
     "838.b510990e.chunk.js.map": "/React-2-social-media/static/js/838.b510990e.chunk.js.map",
     "787.f08db970.chunk.js.map": "/React-2-social-media/static/js/787.f08db970.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.afecfa8c.css",
-    "static/js/main.13c4fe9b.js"
+    "static/js/main.5ecb35d4.js"
   ]
 }
