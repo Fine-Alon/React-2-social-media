@@ -9,7 +9,7 @@ import {
 } from "../../Redux/reducer_profilePage";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../HOC/WithAuthRedirect";
-import {initializeApp} from "../../Redux/reducer_app";
+import {initializeApp} from "../../Redux/reducer_app.ts";
 import withRouter from "../../HOC/WithRouter";
 
 class ProfileContainer extends React.Component {

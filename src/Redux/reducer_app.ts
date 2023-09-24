@@ -1,8 +1,16 @@
 import {getAuthUserData} from "./reducer_auth";
 
-const SET_INITIALIZED = 'SET_INITIALIZED'
+type initialStateType = {
+    isInitialized: boolean
+}
 
-let initialState = {
+const SET_INITIALIZED: 'SET_INITIALIZED' = 'SET_INITIALIZED'
+
+type reducerUserAppType = {
+    (state: Object, action: Object)=> state: Object
+}
+
+let initialState: initialStateType = {
     isInitialized: false,
 }
 const reducerUserApp = (state = initialState, action) => {
@@ -17,7 +25,7 @@ const reducerUserApp = (state = initialState, action) => {
     }
 }
 
-export const initializedSuccess = () => ({type: SET_INITIALIZED})
+export const initializedSuccess: () => void = () => ({type: SET_INITIALIZED})
 
 export const initializeApp = () => async (dispatch) => {
     const promise = await dispatch(getAuthUserData())

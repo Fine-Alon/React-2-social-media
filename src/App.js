@@ -10,7 +10,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import ErrorBoundary from "./components/common/Preloader/ErrorBoundary";
-import {initializeApp} from "./Redux/reducer_app";
+import {initializeApp} from "./Redux/reducer_app.ts";
 import {WithSuspenseLazy} from "./HOC/WithSuspenseLazy";
 
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
