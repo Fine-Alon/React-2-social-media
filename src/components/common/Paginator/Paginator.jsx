@@ -25,7 +25,7 @@ const Paginator = ({portionSize,...props}) => {
             {pagesButtons
                 .filter(p => p >= startPortionNumber && p <= endPortionNumber)
                 .map(p => {
-                    return <span onClick={() => {
+                    return <span key={p} onClick={() => {
                         props.onPageChanged(p)
                     }} className={props.currentPage === p
                         ? styles.currentPage

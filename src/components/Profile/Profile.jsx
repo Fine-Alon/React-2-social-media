@@ -5,7 +5,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
     return (
-        <body className={style.content}>
+        <div className={style.content}>
         <ProfileInfo isOwner={props.isOwner}
                      updateProfileInfo={props.updateProfileInfo}
                      updateStatus={props.updateStatus}
@@ -14,7 +14,7 @@ const Profile = (props) => {
                      updateProfilePhoto={props.updateProfilePhoto}
                      userProfile={props.userProfile}/>
         <MyPostsContainer/>
-        </body>
+        </div>
     )
 }
 

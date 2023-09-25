@@ -4,7 +4,7 @@ import Post from './Post/Post';
 import {useForm} from "react-hook-form";
 
 const MyPosts = React.memo(({postInfo, addNewPost}) => {
-    let postInfoComps = [...postInfo].map((p) => (<Post key={p.id} likesCount={p.countOfLikes} message={p.message}/>))
+    let postInfoComps = [...postInfo].map((p) => (<Post key={p.message} likesCount={p.countOfLikes} message={p.message}/>))
     const {
         handleSubmit,
         register,

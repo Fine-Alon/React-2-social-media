@@ -1,5 +1,6 @@
 import {usersAPI} from "../api/api";
 import {updateObjInArr} from "../utils/object-helpers";
+import {UsersType} from "../Types/Types";
 
 const FOLLOW_USER = 'FOLLOW_USER'
 const UNFOLLOW_USER = 'UNFOLLOW_USER'
@@ -11,15 +12,17 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
 let initialState = {
-    users: [],
+    users:[] as Array<UsersType>,
     countPerPage: 5,
     totalUsersCount: 0,
     currentPage: 53,
     isFetching: true,
-    followingProgress: [],
+    followingProgress:[]as Array<number>,
 }
 
-const reducerFriendsPage = (state = initialState, action) => {
+type InitialStateType= typeof initialState
+
+const reducerFriendsPage = (state = initialState, action:any):InitialStateType => {
     switch (action.type) {
         case FOLLOW_USER:
             return {
@@ -65,17 +68,61 @@ const reducerFriendsPage = (state = initialState, action) => {
     }
 }
 
-export let followConfirm = (userId) => ({type: FOLLOW_USER, userId})
-export let unfollowConfirm = (userId) => ({type: UNFOLLOW_USER, userId})
-export let ACSetUser = (users) => ({type: SET_USERS, users})
-export let ACSetCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
-export let ACSetTotalUsersCount = (totalUsersCount) => ({type: TOTAL_USER_COUNT, count: totalUsersCount})
-export let ACIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
-export let ACToggleFollowingProgress = (isFetch, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetch, userId})
-export let ACShowMoreBtn = () => ({type: SHOW_MORE_BTN})
 
-export const getUsers = (countPerPage, currentPage) => {
-    return async (dispatch, getState) => {
+type FollowConfirmACType={
+    type:typeof FOLLOW_USER
+    userId:number
+}
+export let followConfirm = (userId:number):FollowConfirmACType => ({type: FOLLOW_USER, userId})
+
+type UnfollowConfirmACType={
+    type:  typeof UNFOLLOW_USER
+    userId:number
+}
+export let unfollowConfirm = (userId:number):UnfollowConfirmACType => ({type: UNFOLLOW_USER, userId})
+
+type SetUserACType={
+    type:  typeof SET_USERS
+    users:UsersType
+}
+export let ACSetUser = (users:UsersType):SetUserACType => ({type: SET_USERS, users})
+
+type SetCurrentPageACType={
+    type:  typeof SET_CURRENT_PAGE
+    currentPage:number
+}
+export let ACSetCurrentPage = (currentPage:number):SetCurrentPageACType => ({type: SET_CURRENT_PAGE, currentPage: currentPage})
+
+type SetTotalUsersCountACType={
+    type:  typeof TOTAL_USER_COUNT
+    count:number
+}
+export let ACSetTotalUsersCount = (totalUsersCount:number):SetTotalUsersCountACType => ({
+    type: TOTAL_USER_COUNT, count: totalUsersCount})
+
+type IsFetchingACType={
+    type:  typeof TOGGLE_IS_FETCHING
+    isFetching:boolean
+}
+export let ACIsFetching = (isFetching:boolean):IsFetchingACType => ({
+    type: TOGGLE_IS_FETCHING, isFetching})
+
+type ToggleFollowingProgressACType={
+    type:  typeof TOGGLE_IS_FOLLOWING_PROGRESS
+    userId:number
+    isFetch:boolean
+}
+export let ACToggleFollowingProgress = (isFetch:boolean, userId:number):ToggleFollowingProgressACType => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetch, userId})
+
+
+type ShowMoreBtnACType={
+    type:  typeof SHOW_MORE_BTN
+}
+export let ACShowMoreBtn = ():ShowMoreBtnACType => ({type: SHOW_MORE_BTN})
+
+export const getUsers = (countPerPage:number, currentPage:number) => {
+    return async (dispatch:any, getState:object) => {
         dispatch(ACIsFetching(true))
         const response = await usersAPI.getUsers(countPerPage, currentPage)
         dispatch(ACSetCurrentPage(currentPage))
@@ -85,20 +132,20 @@ export const getUsers = (countPerPage, currentPage) => {
     }
 }
 
-const followUnfollowFlow = async (dispatch, userId, APIisSubscribeMethod, ACisConfirmMethod) => {
+const followUnfollowFlow = async (dispatch:any, userId:number, APIisSubscribeMethod:any, ACisConfirmMethod:any) => {
     dispatch(ACToggleFollowingProgress(true, userId))
     const response = await APIisSubscribeMethod(userId)
     if (response.resultCode === 0) dispatch(ACisConfirmMethod(userId))
     dispatch(ACToggleFollowingProgress(false, userId))
 }
 
-export const deleteFollower = (userId) => {
-    return (dispatch, getState) => {
+export const deleteFollower = (userId:number) => {
+    return (dispatch:any, getState:object) => {
         followUnfollowFlow(dispatch, userId, usersAPI.unsubscribeUser.bind(usersAPI), unfollowConfirm)
     }
 }
-export const subscribeFollower = (userId) => {
-    return (dispatch, getState) => {
+export const subscribeFollower = (userId:number) => {
+    return (dispatch:any, getState:object) => {
         followUnfollowFlow(dispatch, userId, usersAPI.subscribeUser.bind(usersAPI), followConfirm)
     }
 }

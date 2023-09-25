@@ -16,7 +16,7 @@ const Friends = (props) => {
             {props.isFetching
                 ? <ErrorBoundary width={{width: "120px"}}/>
 
-                : props.users.map(u =>  <Friend user={u} followingProgress={props.followingProgress}
+                : props.users.map(u =>  <Friend key={u.id} user={u} followingProgress={props.followingProgress}
                                                subscribeFollower={props.subscribeFollower}
                                                deleteFollower={props.deleteFollower}/>)
             }
