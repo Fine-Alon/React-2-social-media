@@ -5,14 +5,14 @@ type PropsType = {
     portionSize?: number
     totalUsersCount: number
     countPerPage: number
-    onPageChanged: (pagesButtons:number) => void
-    currentPage:number
+    onPageChanged: (pagesButtons: number) => void
+    currentPage: number
 }
 
 const Paginator: FC<PropsType> = ({portionSize, ...props}) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.countPerPage)
 
-    let pagesButtons:Array<number> = []
+    let pagesButtons: Array<number> = []
     for (let i = 1; i <= pagesCount; i++) {
         pagesButtons.push(i)
     }
@@ -23,36 +23,38 @@ const Paginator: FC<PropsType> = ({portionSize, ...props}) => {
     let endPortionNumber = startPortionNumber + portionSize - 1
 
 
-    return (<div className={styles.paginator_container}>
-        {startPortionNumber > 1 &&
-            <button onClick={() => {
-                setStep((step - 1))
-            }}>prev</button>
-        }
-        <div className={styles.pages}>
-            {pagesButtons
-                .filter(p => p >= startPortionNumber && p <= endPortionNumber)
-                .map(p => {
-                    return <span key={p} onClick={() => {
-                        props.onPageChanged(p)
-                    }} className={props.currentPage === p
-                        ? styles.currentPage
-                        : ''}>{p}{p !== endPortionNumber ? "," : "..."}
+    return <>
+        <div className={styles.paginator_container}>
+            {startPortionNumber > 1 &&
+                <button onClick={() => {
+                    setStep((step - 1))
+                }}>prev</button>
+            }
+            <div className={styles.pages}>
+                {pagesButtons
+                    .filter(p => p >= startPortionNumber && p <= endPortionNumber)
+                    .map(p => {
+                        return <span key={p} onClick={() => {
+                            props.onPageChanged(p)
+                        }} className={props.currentPage === p
+                            ? styles.currentPage
+                            : ''}>{p}{p !== endPortionNumber ? "," : "..."}
                     </span>
-                })}
-            <span onClick={() => {
-                props.onPageChanged(pagesCount)
-            }} className={props.currentPage === pagesCount
-                ? styles.currentPage
-                : ''}> {pagesCount}
+                    })}
+                <span onClick={() => {
+                    props.onPageChanged(pagesCount)
+                }} className={props.currentPage === pagesCount
+                    ? styles.currentPage
+                    : ''}> {pagesCount}
              </span>
-        </div>
-        {endPortionNumber < pagesCount &&
-            <button onClick={() => {
-                setStep(step + 1)
-            }}>next</button>
-        }
+            </div>
+            {endPortionNumber < pagesCount &&
+                <button onClick={() => {
+                    setStep(step + 1)
+                }}>next</button>
+            }
 
-    </div>)
+        </div>
+    </>
 }
 export default Paginator;

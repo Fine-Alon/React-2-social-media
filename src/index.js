@@ -6,7 +6,7 @@ import {HashRouter as Router} from "react-router-dom";
 import App from "./App";
 import store from "./Redux/redux_store";
 import {Provider} from "react-redux";
-import ErrorBoundary from "./components/common/Preloader/Preloader";
+import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let renderEntireThree = (state) => {
