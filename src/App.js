@@ -9,9 +9,10 @@ import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import ErrorBoundary from "./components/common/Preloader/ErrorBoundary";
+import ErrorBoundary from "./components/common/Preloader/Preloader";
 import {initializeApp} from "./Redux/reducer_app.ts";
 import {WithSuspenseLazy} from "./HOC/WithSuspenseLazy";
+import Preloader from "./components/common/Preloader/Preloader";
 
 const DialogsContainer = lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = lazy(() => import('./components/Profile/ProfileContainer'));
@@ -28,7 +29,7 @@ class App extends React.Component<{}> {
 
     render() {
         if (!this.props.isInitialized) {
-            return <ErrorBoundary width={{width: "100%"}}/>
+            return <Preloader width={{width: "100%"}}/>
         }
 
         return (
@@ -44,7 +45,7 @@ class App extends React.Component<{}> {
                         <Route path={'/news'} element={<News/>}/>
                         <Route path={'/music'} element={<Music/>}/>
                         <Route path={'/friends'}
-                               element={<FriendContainerWithSuspense/>}/>
+                               element={<FriendContainerWithSuspense pageTitle={"Samurai"}/>}/>
                         <Route path={'/settings'} element={<Settings/>}/>
                         <Route path={'/login'} element={<Login/>}/>
                         <Route path="/" element={<Navigate to="/profile"/>}/>

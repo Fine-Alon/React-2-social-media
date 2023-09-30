@@ -1,9 +1,9 @@
 import React, {FC} from "react";
 import styles from "./Friends.module.css"
-import ErrorBoundary from "../common/Preloader/ErrorBoundary";
 import Paginator from "../common/Paginator/Paginator";
-import Friend from "./Friend";
+import Friend from "./Friend.jsx";
 import {UsersType} from "../../Types/Types";
+import Preloader from "../common/Preloader/Preloader";
 
 
 type PropsType = {
@@ -14,8 +14,8 @@ type PropsType = {
     isFetching: boolean
     users: Array<UsersType>
     followingProgress: Array<number>
-    subscribeFollower: () => void
-    deleteFollower: () => void
+    subscribeFollower: (userId: number | undefined) => void
+    deleteFollower: (userId: number | undefined) => void
 }
 const Friends: FC<PropsType> = (props) => {
     return (<div className={styles.users_section}>
@@ -27,7 +27,7 @@ const Friends: FC<PropsType> = (props) => {
                        onPageChanged={props.onPageChanged} currentPage={props.currentPage}/>
 
             {props.isFetching
-                ? <ErrorBoundary width={{width: "120px"}}/>
+                ? <Preloader width={{width: "120px"}}/>
 
                 : props.users.map(u => <Friend key={u.id} user={u}
                                                followingProgress={props.followingProgress}

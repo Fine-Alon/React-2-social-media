@@ -1,4 +1,5 @@
 import React from "react";
+import Preloader from "../common/Preloader/Preloader"
 import {connect} from "react-redux";
 import {
     ACToggleFollowingProgress, deleteFollower, followConfirm, getUsers, subscribeFollower, unfollowConfirm
@@ -15,25 +16,31 @@ import {
 import {UsersType} from "../../Types/Types";
 import {AppStateType} from "../../Redux/redux_store";
 
-
-type PropsType = {
-    countPerPage: number
-    currentPage: number
+type MapStatePropsType = {
+    countPerPage: number | undefined
+    currentPage: number | undefined
     isFetching: boolean
-    totalUsersCount: number
-    followed: boolean
-
+    totalUsersCount: number | undefined
+    followed?: boolean
     users: Array<UsersType>
     followingProgress: Array<number>
-
-    getUsers: (countPerPage: number, currentPage: number) => void
-    onPageChanged: (pagesButtons: number) => void
-    subscribeFollower: () => void
-    deleteFollower: () => void
-    followConfirm: () => void
-    unfollowConfirm: () => void
-    toggleFollowingProgress: () => void
 }
+
+type MapDispatchPropsType = {
+    getUsers: (countPerPage: number, currentPage: number) => void
+    onPageChanged?: (pagesButtons: number) => void
+    subscribeFollower: (userId: any) => void
+    deleteFollower: (userId: any ) => void
+    followConfirm: (userId: number | undefined) => void
+    unfollowConfirm: (userId: number | undefined) => void
+    toggleFollowingProgress: (isFetching: boolean, id: number | undefined) => void
+}
+
+type OwnPropsType = {
+    pageTitle: string
+}
+
+type PropsType = OwnPropsType & MapStatePropsType & MapDispatchPropsType
 
 class FriendsContainer extends React.Component<PropsType> {
 
@@ -47,20 +54,24 @@ class FriendsContainer extends React.Component<PropsType> {
     }
 
     render() {
-        return <Friends users={this.props.users}
-                        totalUsersCount={this.props.totalUsersCount}
-                        countPerPage={this.props.countPerPage}
-                        onPageChanged={this.onPageChanged}
-                        currentPage={this.props.currentPage}
-                        isFetching={this.props.isFetching}
-                        followingProgress={this.props.followingProgress}
-                        deleteFollower={this.props.deleteFollower}
-                        subscribeFollower={this.props.subscribeFollower}
-        />
+        return <>
+            <h1>{this.props.pageTitle}</h1>
+            {this.props.isFetching ? <Preloader width={{width: "100%"}}/> : null}
+            <Friends users={this.props.users}
+                     totalUsersCount={this.props.totalUsersCount}
+                     countPerPage={this.props.countPerPage}
+                     onPageChanged={this.onPageChanged}
+                     currentPage={this.props.currentPage}
+                     isFetching={this.props.isFetching}
+                     followingProgress={this.props.followingProgress}
+                     deleteFollower={this.props.deleteFollower}
+                     subscribeFollower={this.props.subscribeFollower}
+            />
+        </>
     }
 }
 
-let mapStateToProps = (state:AppStateType) => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     // using selectors bellow
     return {
         users: getUsersSuperSelector(state),
@@ -72,9 +83,7 @@ let mapStateToProps = (state:AppStateType) => {
     }
 }
 
-// type State
-
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch): MapDispatchPropsType => {
     return {
         followConfirm: (userId) => {
             dispatch(followConfirm(userId))
@@ -96,8 +105,8 @@ let mapDispatchToProps = (dispatch) => {
         },
     }
 }
-
+// TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,AppStateType>(mapStateToProps, mapDispatchToProps),
 )(FriendsContainer)
 

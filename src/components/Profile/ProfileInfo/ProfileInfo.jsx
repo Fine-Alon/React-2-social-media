@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import style from './ProfileInfo.module.css'
-import ErrorBoundary from "../../common/Preloader/ErrorBoundary";
 import myAvatar from "../../../assets/img/users_ava.png";
 import ProfileStatusHooks from "./ProfileStatus/ProfileStatusHooks";
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm";
+import Preloader from "../../common/Preloader/Preloader";
 
 const ProfileInfo = ({userProfile, updateProfileInfo, sendingSuccess, userStatus, updateStatus, isOwner, ...props}) => {
 
@@ -15,7 +15,7 @@ const ProfileInfo = ({userProfile, updateProfileInfo, sendingSuccess, userStatus
     }
 
     if (!userProfile) {
-        return <ErrorBoundary width={{width: "100%"}}/>
+        return <Preloader width={{width: "100%"}}/>
     }
 
     const onMainPhotoSelected = (e) => {
