@@ -6,7 +6,15 @@ import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm";
 import Preloader from "../../common/Preloader/Preloader";
 
-const ProfileInfo = ({userProfile, updateProfileInfo, sendingSuccess, userStatus, updateStatus, isOwner, ...props}) => {
+const ProfileInfo = ({
+                         userProfile,
+                         updateProfilePhoto,
+                         updateProfileInfo,
+                         sendingSuccess,
+                         userStatus,
+                         updateStatus,
+                         isOwner, ...props
+                     }) => {
 
     const [adminMode, setAdminMode] = useState(false)
 
@@ -19,11 +27,11 @@ const ProfileInfo = ({userProfile, updateProfileInfo, sendingSuccess, userStatus
     }
 
     const onMainPhotoSelected = (e) => {
-        e.target.files.length && props.updateProfilePhoto(e.target.files[0])
+        e.target.files.length && updateProfilePhoto(e.target.files[0])
     }
 
     const handleProfileDataFormSubmit = () => {
-           setAdminMode(false)
+        setAdminMode(false)
     }
 
     return (

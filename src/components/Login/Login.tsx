@@ -1,11 +1,36 @@
 import React from "react" ;
 import style from "./Login.module.css";
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {connect} from "react-redux";
 import {loginUser} from "../../Redux/reducer_auth";
 import {Navigate} from "react-router-dom";
+import {AppStateType} from "../../Redux/redux_store";
 
-const Login = (props) => {
+
+type DispatchPropsType = {
+    loginUser: (email: string, password: string, rememberMe: boolean,
+                captcha: string, setError: any) => void
+}
+
+type OwnPropsType = {}
+
+type MapStatePropsType = {
+    isAuth: boolean
+    captchaURL: string | null
+    serverErrorMessage: string | any
+}
+
+type PropsType = DispatchPropsType & MapStatePropsType & OwnPropsType
+
+interface LoginFormInterface {
+    email: string | null
+    password: string | null
+    rememberMe: boolean
+    captcha: string | null
+    server:string | null
+}
+
+const Login: React.FC<PropsType> = (props) => {
     const {
         register,
         handleSubmit,
@@ -14,14 +39,18 @@ const Login = (props) => {
         clearErrors,
         setError,
         reset
-    } = useForm({
+    } = useForm<LoginFormInterface>({
         mode: "onBlur",
         defaultValues: {
+            email: '',
+            password: '',
             rememberMe: true,
+            captcha: null
         },
         criteriaMode: 'all',
     })
-    const onSubmit = (data) => {
+
+    const onSubmit: SubmitHandler<LoginFormInterface> = (data) => {
         const {email, password, rememberMe, captcha} = data
         props.loginUser(email, password, rememberMe, captcha, setError)
 
@@ -45,9 +74,7 @@ const Login = (props) => {
                     <input type="email" placeholder="email" className={errors.email ? style.inputError : ''}
                            {...register("email", {
                                required: 'Email Address is required'
-                               /*   onChange: (e) => {
-                                      console.log(e)
-                                  },*/
+                               /* Other validation rules here */
                            })}
                            onFocus={() => clearErrors(["email", "server"])
                            }
@@ -87,7 +114,7 @@ const Login = (props) => {
         </div>
     )
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     isAuth: state.userAuth.isAuth,
     captchaURL: state.userAuth.captchaURL,
     serverErrorMessage: state.userAuth.serverErrorMessage,
